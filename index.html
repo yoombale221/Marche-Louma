@@ -1,88 +1,110 @@
-<!DOCTYPE html>
-<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Marché Louma 🇸🇳 - Boost tes ventes</title>
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Marché Louma V4 🇸🇳</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;800;900&display=swap" rel="stylesheet">
 <style>*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui}body{background:#f1f5f9;color:#0f172a}
 header{background:linear-gradient(135deg,#0b2e6e,#1e4fb5);color:#fff;padding:14px 12px;position:sticky;top:0;z-index:20}
-.ht{display:flex;justify-content:space-between;align-items:center}.logo{font-weight:900;font-size:20px}.logo span{font-size:11px;opacity:.9;display:block;font-weight:600}
-.btn-pub{background:#ff7a00;color:#fff;border:none;padding:9px 16px;border-radius:999px;font-weight:800;font-size:13px}
-.hero{background:#fff;margin:10px;border-radius:18px;padding:12px;box-shadow:0 2px 10px rgba(0,0,0,.06)}.sb{display:flex;gap:6px;background:#f1f5f9;border-radius:12px;padding:4px 4px 4px 12px;align-items:center}.sb input{flex:1;border:none;background:transparent;padding:9px 0;outline:none;font-weight:600;font-size:13px}.sb button{background:#0b2e6e;color:#fff;border:none;padding:8px 14px;border-radius:9px;font-weight:800}
-.stats{display:flex;justify-content:space-around;background:#fff;margin:0 10px;padding:10px;border-radius:12px;font-size:11px;color:#64748b;font-weight:700}.stats b{color:#0b2e6e;font-size:13px;display:block}
-.fils{display:flex;gap:7px;overflow-x:auto;padding:10px 10px 4px;scrollbar-width:none}.chip{flex-shrink:0;border:1.5px solid #e2e8f0;background:#fff;padding:7px 14px;border-radius:999px;font-weight:700;font-size:12px;white-space:nowrap}.chip.active{background:#0b2e6e;color:#fff;border-color:#0b2e6e}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px}.card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.06);display:flex;flex-direction:column;position:relative}.card.boosted{border:2px solid #ff7a00;box-shadow:0 4px 16px rgba(255,122,0,.25)}.imgw{position:relative;height:155px;background:#e2e8f0;overflow:hidden}.imgw img{width:100%;height:100%;object-fit:cover}
-.badge{position:absolute;top:6px;left:6px;background:rgba(11,46,110,.9);color:#fff;font-size:9px;padding:4px 7px;border-radius:999px;font-weight:800}
-.badge.boost{left:auto;right:34px;background:#ff7a00;animation:pulse 1.5s infinite}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-.heart{position:absolute;top:6px;right:6px;background:#fff;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;box-shadow:0 2px 5px rgba(0,0,0,.15)}
-.bd{padding:8px 9px 10px;flex:1;display:flex;flex-direction:column}.tt{font-size:12px;font-weight:800;line-height:1.25;height:30px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}.pr{color:#0b2e6e;font-weight:900;font-size:14px;margin-top:5px}.mt{font-size:10px;color:#64748b;margin:3px 0 6px;display:flex;justify-content:space-between}
-.btn-wa{background:#22c55e;color:#fff;border:none;width:100%;padding:8px;border-radius:10px;font-weight:800;font-size:12px}
-.btn-boost{background:#fff7ed;color:#ff7a00;border:1.5px solid #ff7a00;width:100%;padding:7px;border-radius:10px;font-weight:800;font-size:11px;margin-top:6px}
+.ht{display:flex;justify-content:space-between;align-items:center}.logo{font-weight:900;font-size:19px}.logo span{font-size:10px;opacity:.9;display:block}
+.btn-pub{background:#ff7a00;color:#fff;border:none;padding:8px 14px;border-radius:999px;font-weight:800;font-size:12px}
+.hero{background:#fff;margin:10px;border-radius:16px;padding:10px;box-shadow:0 2px 8px rgba(0,0,0,.06)}.sb{display:flex;gap:6px;background:#f1f5f9;border-radius:12px;padding:4px 4px 4px 12px;align-items:center}.sb input{flex:1;border:none;background:transparent;padding:8px 0;outline:none;font-weight:600;font-size:13px}.sb button{background:#0b2e6e;color:#fff;border:none;padding:7px 12px;border-radius:8px;font-weight:800}
+.stats{display:flex;justify-content:space-around;background:#fff;margin:0 10px;padding:8px;border-radius:10px;font-size:10px;color:#64748b;font-weight:700}.stats b{color:#0b2e6e;font-size:12px;display:block}
+.fils{display:flex;gap:6px;overflow-x:auto;padding:8px 10px;scrollbar-width:none}.chip{flex-shrink:0;border:1.5px solid #e2e8f0;background:#fff;padding:6px 12px;border-radius:999px;font-weight:700;font-size:11px}.chip.active{background:#0b2e6e;color:#fff}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:9px}.card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.06);display:flex;flex-direction:column;position:relative}.card.boosted{border:2px solid #ff7a00}.imgw{position:relative;height:145px;background:#e2e8f0;overflow:hidden}.imgw img{width:100%;height:100%;object-fit:cover}
+.badge{position:absolute;top:5px;left:5px;background:rgba(11,46,110,.9);color:#fff;font-size:8px;padding:3px 6px;border-radius:999px;font-weight:800}
+.badge.boost{left:auto;right:30px;background:#ff7a00}.heart{position:absolute;top:5px;right:5px;background:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px}
+.bd{padding:7px 8px 8px;flex:1;display:flex;flex-direction:column}.tt{font-size:11px;font-weight:800;line-height:1.2;height:28px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}.pr{color:#0b2e6e;font-weight:900;font-size:13px;margin-top:4px}.mt{font-size:9px;color:#64748b;margin:2px 0 5px;display:flex;justify-content:space-between}
+.btn-wa{background:#22c55e;color:#fff;border:none;width:100%;padding:7px;border-radius:8px;font-weight:800;font-size:11px}
+.btn-boost{background:#fff7ed;color:#ff7a00;border:1px solid #ff7a00;width:100%;padding:6px;border-radius:8px;font-weight:800;font-size:10px;margin-top:5px}
+.btn-del{background:#fee2e2;color:#dc2626;border:none;width:100%;padding:6px;border-radius:8px;font-weight:700;font-size:10px;margin-top:5px}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);z-index:50;display:none;align-items:flex-end}.modal.show{display:flex}
-.box{background:#fff;width:100%;max-height:94vh;overflow-y:auto;border-radius:26px 26px 0 0;padding:18px;animation:up .25s}@keyframes up{from{transform:translateY(100%)}to{transform:translateY(0)}}
-.input{width:100%;padding:12px 13px;border:1.5px solid #e2e8f0;border-radius:11px;font-size:13px;font-weight:600;margin-bottom:10px;outline:none}.input:focus{border-color:#0b2e6e}.row{display:flex;gap:8px}.row .input{flex:1}
-.btn-sub{background:#0b2e6e;color:#fff;border:none;width:100%;padding:13px;border-radius:12px;font-weight:900;font-size:14px}
-.btn-clo{background:#f1f5f9;border:none;padding:11px;width:100%;border-radius:11px;font-weight:700;margin-top:8px}
-.prev{width:100%;height:140px;border:2px dashed #cbd5e1;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:10px;background:#f8fafc;font-size:12px;color:#64748b}
-.prev img{width:100%;height:100%;object-fit:cover}
-.boost-card{border:2px solid #e2e8f0;border-radius:14px;padding:12px;margin-bottom:10px;cursor:pointer}.boost-card.sel{border-color:#ff7a00;background:#fff7ed}.boost-card h4{font-size:14px;font-weight:900}.boost-card p{font-size:11px;color:#64748b;margin:4px 0}.boost-card b{color:#ff7a00}
-.paybox{background:#f8fafc;border:1.5px dashed #0b2e6e;border-radius:12px;padding:12px;margin:12px 0;text-align:center}
-.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#0b2e6e;color:#fff;padding:11px 18px;border-radius:999px;font-weight:800;font-size:12px;z-index:100;display:none}
+.box{background:#fff;width:100%;max-height:94vh;overflow-y:auto;border-radius:22px 22px 0 0;padding:16px}.input{width:100%;padding:11px 12px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:12px;font-weight:600;margin-bottom:8px;outline:none}.btn-sub{background:#0b2e6e;color:#fff;border:none;width:100%;padding:12px;border-radius:10px;font-weight:900}.btn-clo{background:#f1f5f9;border:none;padding:10px;width:100%;border-radius:10px;font-weight:700;margin-top:6px}
+.prev{width:100%;height:120px;border:2px dashed #cbd5e1;border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:8px;background:#f8fafc;font-size:11px}.prev img{width:100%;height:100%;object-fit:cover}
+.boost-card{border:2px solid #e2e8f0;border-radius:12px;padding:10px;margin-bottom:8px}.boost-card.sel{border-color:#ff7a00;background:#fff7ed}.paybox{background:#f8fafc;border:1.5px dashed #0b2e6e;border-radius:10px;padding:10px;margin:10px 0;text-align:center}
+.toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#0b2e6e;color:#fff;padding:10px 16px;border-radius:999px;font-weight:800;font-size:11px;z-index:100;display:none}
+.admin-bar{background:#ff7a00;color:#fff;padding:8px 12px;font-size:11px;font-weight:800;text-align:center;display:none}
 </style></head><body>
-<header><div class="ht"><div class="logo">Marché Louma 🇸🇳<span>Vends tout • Sénégal</span></div><button class="btn-pub" onclick="openPub()">+ Publier</button></div></header>
-<div class="hero"><div class="sb">🔍<input id="search" placeholder="Voiture, iPhone, canapé..." oninput="render()"><button onclick="render()">Chercher</button></div></div>
-<div class="stats"><div><b id="cnt">0</b>Annonces</div><div><b style="color:#22c55e">Wave / OM</b>Paiement boost</div><div><b>78 44 17 720</b>Admin</div></div>
-<div class="fils" id="fils"><button class="chip active" onclick="setCat('Tout',this)">Tout ✨</button><button class="chip" onclick="setCat('Vehicules',this)">🚗 Véhicules</button><button class="chip" onclick="setCat('Telephones',this)">📱 Téléphones</button><button class="chip" onclick="setCat('Maison',this)">🛋️ Maison</button></div>
+<div class="admin-bar" id="adminBar">🔐 MODE ADMIN ACTIVÉ - Tu peux tout supprimer</div>
+<header><div class="ht"><div class="logo">Marché Louma 🇸🇳<span id="logoSub">Vends tout • Sénégal</span></div><button class="btn-pub" onclick="openPub()">+ Publier</button></div></header>
+<div class="hero"><div class="sb">🔍<input id="search" placeholder="Rechercher..." oninput="render()"><button onclick="render()">Go</button></div></div>
+<div class="stats"><div><b id="cnt">0</b>Annonces</div><div><b onclick="openAdmin()" style="color:#ff7a00;text-decoration:underline">Admin: Voir paiements</b>Boosts</div><div><b>78 44 17 720</b>Wave</div></div>
+<div class="fils"><button class="chip active" onclick="setCat('Tout',this)">Tout ✨</button><button class="chip" onclick="setCat('Vehicules',this)">🚗 Véhicules</button><button class="chip" onclick="setCat('Telephones',this)">📱 Téléphones</button><button class="chip" onclick="setCat('Maison',this)">🛋️ Maison</button><button class="chip" onclick="setCat('MesAnnonces',this)">👤 Mes annonces</button></div>
 <div class="grid" id="grid"></div>
+
 <div class="modal" id="modalPub" onclick="if(event.target==this)closePub()"><div class="box">
-<h3 style="font-weight:900">Publier 📦</h3><p style="font-size:12px;color:#64748b;margin:6px 0 12px">Visible instantanément !</p>
-<div class="prev" id="prev" onclick="document.getElementById('file').click()">📸 Ajouter photo</div><input type="file" id="file" accept="image/*" hidden onchange="hFile(this)">
-<input class="input" id="titre" placeholder="Titre ex: iPhone 13 Pro"><div class="row"><input class="input" id="prix" placeholder="Prix ex: 280 000 FCFA"><select class="input" id="catSel"><option>Vehicules</option><option>Telephones</option><option>Maison</option><option>Mode</option><option>Electro</option><option>Autre</option></select></div>
-<div class="row"><input class="input" id="ville" placeholder="Ville ex: Guédiawaye"><select class="input" id="etat"><option>Neuf</option><option>Très bon état</option><option>Bon état</option></select></div>
+<h3 style="font-weight:900;font-size:16px">Publier 📦</h3><p style="font-size:11px;color:#64748b;margin:4px 0 10px">Ton annonce + WhatsApp à l'admin auto</p>
+<div class="prev" id="prev" onclick="document.getElementById('file').click()">📸 Photo</div><input type="file" id="file" accept="image/*" hidden onchange="hFile(this)">
+<input class="input" id="titre" placeholder="Titre"><div style="display:flex;gap:6px"><input class="input" id="prix" placeholder="Prix FCFA"><select class="input" id="catSel"><option>Vehicules</option><option>Telephones</option><option>Maison</option><option>Mode</option><option>Electro</option><option>Autre</option></select></div>
+<div style="display:flex;gap:6px"><input class="input" id="ville" placeholder="Ville"><select class="input" id="etat"><option>Neuf</option><option>Très bon état</option><option>Bon état</option></select></div>
 <input class="input" id="wa" placeholder="Ton WhatsApp 78..."><button class="btn-sub" onclick="publier()">Publier 🚀</button><button class="btn-clo" onclick="closePub()">Annuler</button></div></div>
+
 <div class="modal" id="modalBoost" onclick="if(event.target==this)closeBoost()"><div class="box">
-<h3 style="font-weight:900">🔥 Booster ton annonce</h3><p style="font-size:12px;color:#64748b;margin:6px 0 12px" id="boostTitle">Mets ton annonce en haut !</p>
-<div class="boost-card sel" id="b1" onclick="selBoost(1)"><h4>⚡ BOOST 24H - 500 FCFA</h4><p>En TOP 24h + badge orange</p><b>Le plus vendu</b></div>
-<div class="boost-card" id="b2" onclick="selBoost(2)"><h4>🚀 SUPER BOOST 3 JOURS - 1000 FCFA</h4><p>En tête 3 jours + 2x vues</p><b>Recommandé</b></div>
-<div class="boost-card" id="b3" onclick="selBoost(3)"><h4>👑 MEGA BOOST 7 JOURS - 2000 FCFA</h4><p>N°1 pendant 7 jours</p><b>Pro</b></div>
-<div class="paybox"><div style="font-weight:900;font-size:13px">📲 Paiement : Wave / Orange Money</div><div style="font-size:22px;font-weight:900;margin:6px 0;color:#0b2e6e">78 44 17 720</div><div style="font-size:11px;color:#64748b">Nom: Marché Louma<br>Après paiement clique en bas</div></div>
-<button class="btn-sub" style="background:#ff7a00" onclick="payer()">J'ai payé - Activer mon Boost ✅</button>
-<button class="btn-clo" onclick="closeBoost()">Plus tard</button></div></div>
+<h3 style="font-weight:900">🔥 Booster</h3><p style="font-size:11px;color:#64748b;margin:4px 0 10px" id="boostTitle">Boost</p>
+<div class="boost-card sel" id="b1" onclick="selBoost(1)"><h4 style="font-size:13px">⚡ 24H - 500F</h4><p style="font-size:10px">TOP 24h</p></div>
+<div class="boost-card" id="b2" onclick="selBoost(2)"><h4 style="font-size:13px">🚀 3 JOURS - 1000F</h4><p style="font-size:10px">TOP 3j</p></div>
+<div class="boost-card" id="b3" onclick="selBoost(3)"><h4 style="font-size:13px">👑 7 JOURS - 2000F</h4><p style="font-size:10px">N°1 7j</p></div>
+<div class="paybox"><div style="font-weight:900;font-size:12px">Wave / OM: 78 44 17 720</div><div style="font-size:10px">Marché Louma</div></div>
+<button class="btn-sub" style="background:#ff7a00" onclick="payer()">J'ai payé ✅</button><button class="btn-clo" onclick="closeBoost()">Plus tard</button></div></div>
+
+<div class="modal" id="modalAdmin" onclick="if(event.target==this)closeAdmin()"><div class="box">
+<h3 style="font-weight:900">🔐 Admin - Paiements Boosts</h3><p style="font-size:11px;color:#64748b;margin:6px 0">Ici tu vois qui a cliqué J'ai payé</p>
+<div id="adminList" style="margin:10px 0"></div>
+<div style="background:#f1f5f9;padding:10px;border-radius:10px;font-size:11px"><b>Astuce:</b> Quand quelqu'un paie vraiment sur Wave, tu reçois notif Wave. Vérifie que le montant correspond, puis active manuellement si besoin.<br><br><b>Code admin pour tout supprimer:</b> Tape 7844 dans recherche pour activer mode admin.</div>
+<button class="btn-clo" onclick="closeAdmin()">Fermer</button></div></div>
+
 <div class="toast" id="toast"></div>
 <script>
-const ADMIN="221784417720";let cat='Tout';let imgB="";let boostChoice=1;let boostFor=-1;
-let data=JSON.parse(localStorage.getItem('louma_v3')||'null')||[
-{t:'Toyota Corolla 2015',p:'3 500 000 FCFA',c:'Vehicules',v:'Dakar',e:'Très bon état',w:ADMIN,d:'Propre',i:'https://images.unsplash.com/photo-1550355291-bbee04a92027?w=600',boostUntil:0},
-{t:'iPhone 13 Pro 128Go',p:'280 000 FCFA',c:'Telephones',v:'Dakar',e:'Très bon état',w:ADMIN,d:'92%',i:'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600',boostUntil:0},
-{t:'Moto Jakarta 125',p:'450 000 FCFA',c:'Vehicules',v:'Thiès',e:'Bon état',w:ADMIN,d:'Papiers',i:'https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=600',boostUntil:0},
-{t:'Canapé 3 Places',p:'150 000 FCFA',c:'Maison',v:'Guédiawaye',e:'Bon état',w:ADMIN,d:'Velours',i:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600',boostUntil:0},
+const ADMIN="221784417720";let cat='Tout';let imgB="";let boostChoice=1;let boostFor=-1;let isAdmin=false;
+let data=JSON.parse(localStorage.getItem('louma_v4')||'null')||[
+{t:'Toyota Corolla 2015',p:'3 500 000 FCFA',c:'Vehicules',v:'Dakar',e:'Très bon état',w:ADMIN,i:'https://images.unsplash.com/photo-1550355291-bbee04a92027?w=600',boostUntil:0,owner:'admin'},
+{t:'iPhone 13 Pro 128Go',p:'280 000 FCFA',c:'Telephones',v:'Dakar',e:'Très bon état',w:ADMIN,i:'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600',boostUntil:0,owner:'admin'},
+{t:'Moto Jakarta 125',p:'450 000 FCFA',c:'Vehicules',v:'Thiès',e:'Bon état',w:ADMIN,i:'https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=600',boostUntil:0,owner:'admin'},
 ];
-function save(){localStorage.setItem('louma_v3',JSON.stringify(data))}
+let myIds=JSON.parse(localStorage.getItem('louma_my')||'[]');
+function save(){localStorage.setItem('louma_v4',JSON.stringify(data));localStorage.setItem('louma_my',JSON.stringify(myIds))}
 function setCat(c,el){cat=c;document.querySelectorAll('.chip').forEach(b=>b.classList.remove('active'));el.classList.add('active');render()}
 function render(){
  const q=document.getElementById('search').value.toLowerCase();
- let list=data.map((x,i)=>({x,i})).filter(o=>(cat==='Tout'||o.x.c===cat)&&(o.x.t+o.x.v).toLowerCase().includes(q));
- list=list.sort((a,b)=>{let now=Date.now();let ba=(a.x.boostUntil||0)>now?1:0;let bb=(b.x.boostUntil||0)>now?1:0; if(ba!==bb)return bb-ba; return b.i-a.i;});
- document.getElementById('cnt').innerText=list.length;
+ if(q==='7844'){isAdmin=true;document.getElementById('adminBar').style.display='block';document.getElementById('logoSub').innerText='MODE ADMIN - Tu peux tout supprimer';toast('Mode admin activé 🔐');}
+ let list=data.map((x,i)=>({x,i})).filter(o=>{
+   if(cat==='MesAnnonces') return myIds.includes(o.i);
+   return (cat==='Tout'||o.x.c===cat)&&(o.x.t+o.x.v).toLowerCase().includes(q);
+ });
+ if(cat!=='MesAnnonces') list=list.sort((a,b)=>{let n=Date.now();return ((b.x.boostUntil||0)>n)-((a.x.boostUntil||0)>n)});
+ document.getElementById('cnt').innerText=data.length;
  document.getElementById('grid').innerHTML=list.map(o=>{
-  let isB=(o.x.boostUntil||0)>Date.now();
-  return `<div class="card ${isB?'boosted':''}"><div class="imgw"><img src="${o.x.i}"><span class="badge">${o.x.e}</span>${isB?'<span class="badge boost">🔥 BOOST</span>':''}<span class="heart">❤️</span></div><div class="bd"><div class="tt">${o.x.t}</div><div class="pr">${o.x.p}</div><div class="mt"><span>📍 ${o.x.v}</span><span>${o.x.c}</span></div><button class="btn-wa" onclick="wa('${o.x.t}','${o.x.w}')">💬 WhatsApp</button><button class="btn-boost" onclick="openBoost(${o.i})">${isB?'🔥 Boosté':'🚀 Booster + de vues'}</button></div></div>`
- }).join('');
+  let isB=(o.x.boostUntil||0)>Date.now();let isMine=myIds.includes(o.i)||isAdmin;
+  return `<div class="card ${isB?'boosted':''}"><div class="imgw"><img src="${o.x.i}"><span class="badge">${o.x.e}</span>${isB?'<span class="badge boost">🔥 BOOST</span>':''}<span class="heart">❤️</span></div><div class="bd"><div class="tt">${o.x.t}</div><div class="pr">${o.x.p}</div><div class="mt"><span>📍 ${o.x.v}</span><span>${o.x.c}</span></div><button class="btn-wa" onclick="wa('${o.x.t}','${o.x.w}')">💬 WhatsApp</button><button class="btn-boost" onclick="openBoost(${o.i})">${isB?'🔥 Boosté '+Math.ceil((o.x.boostUntil-Date.now())/3600000)+'h':'🚀 Booster'}</button>${isMine?`<button class="btn-del" onclick="suppr(${o.i})">🗑️ Supprimer</button>`:''}</div></div>`
+ }).join('')||`<div style="grid-column:1/3;text-align:center;padding:30px;color:#64748b;font-size:13px">Aucune annonce dans ${cat}<br><br>Clique + Publier pour ajouter</div>`;
 }
 function wa(t,w){let c=w.replace(/\s/g,'');if(!c.startsWith('221'))c='221'+c.slice(-9);let m=encodeURIComponent('Salut, intéressé par '+t+' vu sur Marché Louma 🇸🇳');window.open('https://wa.me/'+c+'?text='+m,'_blank')}
 function openPub(){document.getElementById('modalPub').classList.add('show')}function closePub(){document.getElementById('modalPub').classList.remove('show')}
 function hFile(inp){let f=inp.files[0];if(!f)return;let r=new FileReader();r.onload=e=>{imgB=e.target.result;document.getElementById('prev').innerHTML='<img src="'+imgB+'">'};r.readAsDataURL(f)}
-function publier(){let t=document.getElementById('titre').value.trim();let p=document.getElementById('prix').value.trim();let c=document.getElementById('catSel').value;let v=document.getElementById('ville').value.trim()||'Dakar';let e=document.getElementById('etat').value;let w=document.getElementById('wa').value.trim()||ADMIN;if(!t||!p){alert('Titre + prix !');return}let i=imgB||'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600';data.push({t,p,c,v,e,w,i,boostUntil:0});save();render();closePub();document.getElementById('titre').value='';document.getElementById('prix').value='';document.getElementById('prev').innerHTML='📸 Ajouter photo';imgB='';toast('Annonce publiée ! 🎉')}
-function openBoost(idx){boostFor=idx;let item=data[idx];document.getElementById('boostTitle').innerText='Booster "'+item.t+'" pour vendre plus vite !';document.getElementById('modalBoost').classList.add('show')}
+function publier(){
+ let t=document.getElementById('titre').value.trim();let p=document.getElementById('prix').value.trim();let c=document.getElementById('catSel').value;let v=document.getElementById('ville').value.trim()||'Dakar';let e=document.getElementById('etat').value;let w=document.getElementById('wa').value.trim()||ADMIN;
+ if(!t||!p){alert('Titre + prix !');return}
+ let i=imgB||'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600';
+ let newIdx=data.length; data.push({t,p,c,v,e,w,i,boostUntil:0,owner:'me'}); myIds.push(newIdx); save(); render(); closePub();
+ // ENVOI AUTO WHATSAPP A L'ADMIN pour que tu voies l'annonce même si localStorage
+ let msgAdmin=encodeURIComponent(`🆕 NOUVELLE ANNONCE Marché Louma!\n\n📦 ${t}\n💰 ${p}\n📍 ${v}\n📂 ${c}\n📱 Client: ${w}\n\nPhoto: (voir sur son téléphone)\n\nTu dois l'ajouter manuellement si tu veux que tout le monde la voie (avant Firebase)`);
+ window.open('https://wa.me/'+ADMIN+'?text='+msgAdmin,'_blank');
+ document.getElementById('titre').value='';document.getElementById('prix').value='';document.getElementById('prev').innerHTML='📸 Photo';imgB='';toast('Publié ! Tu as reçu WhatsApp admin 🎉');
+}
+function openBoost(idx){boostFor=idx;document.getElementById('boostTitle').innerText='Booster "'+data[idx].t+'"';document.getElementById('modalBoost').classList.add('show')}
 function closeBoost(){document.getElementById('modalBoost').classList.remove('show')}
 function selBoost(n){boostChoice=n;document.querySelectorAll('.boost-card').forEach(b=>b.classList.remove('sel'));document.getElementById('b'+n).classList.add('sel')}
 function payer(){
- if(boostFor<0)return;
- let hours={1:24,2:72,3:168}[boostChoice];let price={1:500,2:1000,3:2000}[boostChoice];
- data[boostFor].boostUntil=Date.now()+hours*3600*1000;
- save();render();closeBoost();
+ if(boostFor<0)return;let hours={1:24,2:72,3:168}[boostChoice];let price={1:500,2:1000,3:2000}[boostChoice];
+ data[boostFor].boostUntil=Date.now()+hours*3600*1000; save(); render(); closeBoost();
+ // SAVE BOOST REQUEST FOR ADMIN
+ let boosts=JSON.parse(localStorage.getItem('louma_boosts')||'[]');
+ boosts.push({t:data[boostFor].t,p:price,h:hours,date:new Date().toLocaleString(),client:data[boostFor].w});
+ localStorage.setItem('louma_boosts',JSON.stringify(boosts));
  let it=data[boostFor];
- let msg=encodeURIComponent(`Salam admin Marché Louma! Je viens de payer ${price} FCFA par Wave au 78 44 17 720 pour BOOSTER mon annonce:\n\n📦 ${it.t}\n💰 ${it.p}\n⏱️ ${hours}h\n\nMon numéro Wave: (mets ton numéro)\nMerci d'activer!`);
+ let msg=encodeURIComponent(`💰 BOOST PAYÉ - Marché Louma!\n\n📦 ${it.t}\n💰 ${price}F pour ${hours}h\n📱 Client: ${it.w}\n⏰ ${new Date().toLocaleString()}\n\nVérifie ton Wave 78 44 17 720 puis confirme!`);
  window.open('https://wa.me/'+ADMIN+'?text='+msg,'_blank');
- toast('Boost activé '+hours+'h ! 🔥');
+ toast('Boost activé ! Tu as reçu WhatsApp 🔥');
 }
-function toast(t){let e=document.getElementById('toast');e.innerText=t;e.style.display='block';setTimeout(()=>e.style.display='none',2600)}
+function suppr(idx){if(confirm('Supprimer cette annonce ?')){data.splice(idx,1);myIds=myIds.filter(id=>id!==idx).map(id=>id>idx?id-1:id);save();render();toast('Supprimé 🗑️')}}
+function openAdmin(){document.getElementById('modalAdmin').classList.add('show');let boosts=JSON.parse(localStorage.getItem('louma_boosts')||'[]');document.getElementById('adminList').innerHTML=boosts.length?boosts.reverse().map(b=>`<div style="border:1px solid #e2e8f0;padding:8px;border-radius:8px;margin-bottom:6px;font-size:11px"><b>${b.t}</b><br>💰 ${b.p}F - ${b.h}h<br>📱 ${b.client}<br>⏰ ${b.date}</div>`).join(''):`<div style="text-align:center;color:#64748b;padding:10px">Aucun paiement boost pour l'instant</div>`}
+function closeAdmin(){document.getElementById('modalAdmin').classList.remove('show')}
+function toast(t){let e=document.getElementById('toast');e.innerText=t;e.style.display='block';setTimeout(()=>e.style.display='none',3000)}
 render();
 </script></body></html>
