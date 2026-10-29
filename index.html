@@ -3,138 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marché Louma PRO - Achat Vente Sénégal 🇸🇳</title>
+<title>Marché Louma PRO</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;800&display=swap');
-body{font-family:'Plus Jakarta Sans',system-ui;background:#f8fafc}
-.card{transition:.2s} .card:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(0,0,0,.1)}
-</style>
 </head>
-<body class="pb-24">
+<body class="bg-[#f8fafc] pb-24">
 <header class="bg-white sticky top-0 z-40 border-b">
 <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 bg-[#0ea5e9] rounded-xl flex items-center justify-center text-white font-black">L</div>
-<div><div class="font-black leading-none">Marché <span class="text-[#f59e0b]">Louma</span></div><div class="text-[10px] tracking-widest text-slate-400 font-bold">PRO • SÉCURISÉ</div></div>
+<div class="flex items-center gap-2">
+<img src="logo.png" class="h-10 w-auto rounded-xl">
 </div>
-<div class="flex gap-2">
-<span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-bold">✓ Vérifié</span>
-<button onclick="openSell()" class="bg-[#0f172a] text-white px-5 py-2.5 rounded-full font-bold text-sm">+ Vendre</button>
-</div>
+<button onclick="document.getElementById('sellModal').style.display='flex'" class="bg-[#0f172a] text-white px-5 py-2.5 rounded-full font-bold text-sm">+ Vendre</button>
 </div>
 </header>
-<div class="bg-[#0f172a] text-white text-xs">
-<div class="max-w-6xl mx-auto px-4 py-2.5 flex gap-4 overflow-x-auto">
-<span>🛡️ Paiement Sécurisé Wave & OM</span><span>•</span><span>📦 Livraison partout au Sénégal</span><span>•</span><span>⭐ Vendeurs Notés</span>
+<div class="bg-[#0f172a] text-white text-[11px]"><div class="max-w-6xl mx-auto px-4 py-2 flex gap-3"><span>🛡️ Paiement Wave & OM</span><span>•</span><span>📦 Livraison Sénégal</span><span>•</span><span>⭐ Vendeurs Notés</span></div></div>
+<div class="max-w-6xl mx-auto p-4">
+<div class="bg-white rounded-2xl border p-3 flex gap-2"><input id="q" oninput="render()" placeholder="Voiture, iPhone..." class="flex-1 outline-none"><select id="city" onchange="render()" class="bg-slate-100 rounded-xl px-2 py-1 text-sm font-bold"><option value="">Tout Sénégal</option><option>Dakar</option><option>Touba</option><option>Thiès</option><option>Saint-Louis</option></select></div>
+<div class="flex gap-2 mt-3 overflow-x-auto"><button onclick="setCat('tout',this)" class="cat bg-[#0f172a] text-white px-4 py-2 rounded-full text-sm font-bold">Tout</button><button onclick="setCat('voiture',this)" class="cat bg-white border px-4 py-2 rounded-full text-sm font-bold">🚗 Voitures</button><button onclick="setCat('telephone',this)" class="cat bg-white border px-4 py-2 rounded-full text-sm font-bold">📱 Téléphones</button><button onclick="setCat('mode',this)" class="cat bg-white border px-4 py-2 rounded-full text-sm font-bold">👕 Mode</button></div>
+<div id="grid" class="grid grid-cols-2 gap-3 mt-4"></div>
 </div>
-</div>
-<div class="max-w-6xl mx-auto">
-<div class="p-4">
-<div class="bg-white rounded-2xl shadow-sm border p-3 flex gap-2">
-<input id="q" oninput="render()" placeholder="Voiture, iPhone, canapé..." class="flex-1 outline-none font-medium">
-<select id="city" onchange="render()" class="bg-slate-100 rounded-xl px-3 py-2 text-sm font-bold"><option value="">Tout Sénégal</option><option>Dakar</option><option>Touba</option><option>Thiès</option><option>Saint-Louis</option></select>
-</div>
-<div class="flex gap-2 mt-3 overflow-x-auto pb-1">
-<button onclick="setCat('tout',this)" class="cat active bg-[#0f172a] text-white px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap">Tout</button>
-<button onclick="setCat('voiture',this)" class="cat bg-white border px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap">🚗 Voitures</button>
-<button onclick="setCat('telephone',this)" class="cat bg-white border px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap">📱 Téléphones</button>
-<button onclick="setCat('mode',this)" class="cat bg-white border px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap">👕 Mode</button>
-<button onclick="setCat('maison',this)" class="cat bg-white border px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap">🏠 Maison</button>
-</div>
-</div>
-<div id="grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 px-4"></div>
-</div>
-<div id="sellModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
-<div class="bg-white rounded-[24px] w-full max-w-md max-h-[90vh] overflow-auto">
-<div class="p-6">
-<div class="flex justify-between items-center mb-4">
-<h2 class="font-black text-xl">Vendre sur Louma PRO</h2>
-<button onclick="closeSell()" class="w-8 h-8 bg-slate-100 rounded-full">✕</button>
-</div>
-<div class="space-y-3">
-<div>
-<label class="text-xs font-bold text-slate-500">PHOTOS (max 3 - gratuit)</label>
-<input type="file" id="photos" accept="image/*" multiple class="w-full bg-slate-50 border-2 border-dashed rounded-xl p-4 text-sm">
-<div id="preview" class="flex gap-2 mt-2"></div>
-</div>
-<input id="titre" placeholder="Titre ex: iPhone 13 128Go" class="w-full border rounded-xl p-3.5 font-medium">
-<div class="grid grid-cols-2 gap-2">
-<input id="prix" type="number" placeholder="Prix FCFA" class="border rounded-xl p-3.5 font-bold">
-<select id="catInput" class="border rounded-xl p-3.5 font-medium"><option value="telephone">📱 Téléphone</option><option value="voiture">🚗 Voiture</option><option value="mode">👕 Mode</option><option value="maison">🏠 Maison</option></select>
-</div>
-<div class="grid grid-cols-2 gap-2">
-<select id="cityInput" class="border rounded-xl p-3.5"><option>Dakar</option><option>Touba</option><option>Thiès</option><option>Saint-Louis</option><option>Autre</option></select>
-<select id="etat" class="border rounded-xl p-3.5"><option>Neuf</option><option>Très bon état</option><option>Bon état</option></select>
-</div>
-<input id="wa" placeholder="WhatsApp 77XXXXXXX" class="w-full border rounded-xl p-3.5">
-<textarea id="desc" placeholder="Description..." class="w-full border rounded-xl p-3.5 h-20"></textarea>
-<div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs">
-<b>🔒 Paiement 100% gratuit & sécurisé :</b> L'acheteur te paie via Wave/OM direct. Pas de commission.
-</div>
-<button onclick="publishPro()" class="w-full bg-[#0ea5e9] text-white font-black py-4 rounded-xl">🚀 PUBLIER GRATUITEMENT</button>
-</div>
-</div>
-</div>
-</div>
-<div id="buyModal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4">
-<div class="bg-white rounded-[24px] w-full max-w-md p-6"><h3 class="font-black text-lg mb-3">Acheter en sécurité 🛡️</h3><div id="buyContent"></div></div>
-</div>
+<div id="sellModal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4"><div class="bg-white rounded-2xl w-full max-w-md p-6 max-h-[90vh] overflow-auto"><h2 class="font-black mb-3">Vendre PRO</h2><input type="file" id="photos" accept="image/*" class="w-full border-2 border-dashed rounded-xl p-3 mb-2"><div id="preview" class="flex gap-2 mb-2"></div><input id="titre" placeholder="Titre" class="w-full border rounded-xl p-3 mb-2"><div class="grid grid-cols-2 gap-2 mb-2"><input id="prix" type="number" placeholder="Prix FCFA" class="border rounded-xl p-3"><select id="catInput" class="border rounded-xl p-3"><option value="telephone">Téléphone</option><option value="voiture">Voiture</option><option value="mode">Mode</option><option value="maison">Maison</option></select></div><div class="grid grid-cols-2 gap-2 mb-2"><select id="cityInput" class="border rounded-xl p-3"><option>Dakar</option><option>Touba</option><option>Thiès</option></select><select id="etat" class="border rounded-xl p-3"><option>Neuf</option><option>Très bon état</option></select></div><input id="wa" placeholder="WhatsApp 77XXXXXXX" class="w-full border rounded-xl p-3 mb-2"><button onclick="publishPro()" class="w-full bg-[#0ea5e9] text-white font-black py-4 rounded-xl">🚀 PUBLIER</button><button onclick="document.getElementById('sellModal').style.display='none'" class="w-full mt-2 bg-slate-100 py-2 rounded-xl">Fermer</button></div></div>
+<div id="buyModal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4"><div class="bg-white rounded-2xl w-full max-w-md p-6"><div id="buyContent"></div></div></div>
 <script>
-let catFilter='tout';
-let products = JSON.parse(localStorage.getItem('louma_pro_v6')||'null') || [
-{titre:'Toyota Corolla 2015 - 45.000km',prix:4500000,cat:'voiture',city:'Dakar',etat:'Très bon état',wa:'771234567',img:'https://images.unsplash.com/photo-1550355291-bbee04a92027?w=600',likes:12,verified:true},
-{titre:'iPhone 13 128Go - Batterie 89%',prix:280000,cat:'telephone',city:'Dakar',etat:'Très bon état',wa:'771234567',img:'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600',likes:34,verified:true},
-{titre:'Nike Air Max - Pointure 43',prix:25000,cat:'mode',city:'Thiès',etat:'Neuf',wa:'771234567',img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600',likes:8,verified:false},
-{titre:'Canapé 3 places + table basse',prix:150000,cat:'maison',city:'Touba',etat:'Bon état',wa:'771234567',img:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600',likes:19,verified:true}
-];
-function render(){
- const q=document.getElementById('q').value.toLowerCase();
- const city=document.getElementById('city').value;
- const grid=document.getElementById('grid'); grid.innerHTML='';
- products.filter(p=>{return (catFilter==='tout'||p.cat===catFilter) && (!q||p.titre.toLowerCase().includes(q)) && (!city||p.city===city);}).forEach((p,i)=>{
-   const d=document.createElement('div'); d.className='card bg-white rounded-2xl overflow-hidden border';
-   d.innerHTML=`<div class="relative"><img src="${p.img}" class="w-full h-48 object-cover"><div class="absolute top-2 left-2 bg-black/70 text-white text-[10px] px-2 py-1 rounded-full font-bold">${p.city}</div>${p.verified?'<div class="absolute top-2 right-2 bg-emerald-500 text-white text-[10px] px-2 py-1 rounded-full font-bold">✓ Vérifié</div>':''}<div class="absolute bottom-2 right-2 bg-white/90 text-xs px-2 py-1 rounded-full font-bold">❤️ ${p.likes}</div></div><div class="p-3"><div class="font-black text-[#0ea5e9]">${Number(p.prix).toLocaleString()} FCFA</div><div class="text-[13px] font-bold leading-tight line-clamp-2 h-10">${p.titre}</div><div class="text-[11px] text-slate-400 mt-1">${p.etat} • ${p.city}</div><button onclick="buy(${i})" class="w-full mt-3 bg-[#0f172a] text-white py-2.5 rounded-xl font-bold text-sm">Acheter 🛡️</button><a href="https://wa.me/221${p.wa}?text=Salam, je veux ${encodeURIComponent(p.titre)} - ${p.prix}FCFA sur Marché Louma PRO" target="_blank" class="block text-center mt-2 bg-[#22c55e] text-white py-2 rounded-xl font-bold text-sm">💬 WhatsApp</a></div>`;
-   grid.appendChild(d);
- });
-}
-function setCat(c,el){catFilter=c; document.querySelectorAll('.cat').forEach(b=>{b.className='cat bg-white border px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap'}); el.className='cat active bg-[#0f172a] text-white px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap'; render();}
-function openSell(){document.getElementById('sellModal').style.display='flex';}
-function closeSell(){document.getElementById('sellModal').style.display='none'}
-function buy(i){
- const p=products[i];
- document.getElementById('buyContent').innerHTML=`<img src="${p.img}" class="w-full h-56 object-cover rounded-xl mb-3"><div class="font-black text-xl text-[#0ea5e9]">${Number(p.prix).toLocaleString()} FCFA</div><div class="font-bold">${p.titre}</div><div class="text-sm text-slate-500 mb-4">${p.etat} • ${p.city}</div><div class="bg-slate-50 rounded-xl p-4 space-y-3 text-sm"><div class="font-bold">Comment acheter en sécurité ?</div><div>1️⃣ Clique WhatsApp pour parler</div><div>2️⃣ Paye via Wave / OM : 77${p.wa.toString().slice(-7)}</div><div>3️⃣ Envoie capture + adresse</div><div>4️⃣ Reçois colis</div></div><a href="https://wa.me/221${p.wa}?text=Salam, je veux acheter ${encodeURIComponent(p.titre)} pour ${p.prix}FCFA. Paiement Wave/OM. Louma PRO" target="_blank" class="block w-full mt-4 bg-[#22c55e] text-white text-center py-4 rounded-xl font-black">💬 CONTACTER SUR WHATSAPP</a><button onclick="document.getElementById('buyModal').style.display='none'" class="w-full mt-2 bg-slate-100 py-3 rounded-xl font-bold">Fermer</button>`;
- document.getElementById('buyModal').style.display='flex';
-}
-document.getElementById('photos')?.addEventListener('change', function(e){
- const preview=document.getElementById('preview'); preview.innerHTML='';
- Array.from(e.target.files).slice(0,3).forEach(f=>{
-   const r=new FileReader(); r.onload=ev=>{preview.innerHTML+=`<img src="${ev.target.result}" class="w-16 h-16 rounded-lg object-cover border">`;}; r.readAsDataURL(f);
- });
-});
-function publishPro(){
- const titre=document.getElementById('titre').value;
- const prix=document.getElementById('prix').value;
- const cat=document.getElementById('catInput').value;
- const city=document.getElementById('cityInput').value;
- const etat=document.getElementById('etat').value;
- const wa=document.getElementById('wa').value;
- const files=document.getElementById('photos').files;
- if(!titre||!prix||!wa){alert('Titre, prix et WhatsApp obligatoires');return;}
- let img='https://via.placeholder.com/600?text=Louma+PRO';
- if(files[0]){
-   const r=new FileReader();
-   r.onload=function(ev){ img=ev.target.result; save(img); };
-   r.readAsDataURL(files[0]);
- } else { save(img); }
- function save(finalImg){
-   products.unshift({titre,prix,cat,city,etat,wa,img:finalImg,likes:0,verified:false});
-   localStorage.setItem('louma_pro_v6', JSON.stringify(products));
-   render(); closeSell();
-   alert('✅ Publié en PRO ! 100% gratuit.');
-   document.getElementById('titre').value=''; document.getElementById('prix').value='';
- }
-}
+let catFilter='tout';let products=JSON.parse(localStorage.getItem('louma_pro_v6')||'null')||[{titre:'Toyota Corolla 2015',prix:4500000,cat:'voiture',city:'Dakar',etat:'Très bon état',wa:'771234567',img:'https://images.unsplash.com/photo-1550355291-bbee04a92027?w=600',likes:12,verified:true},{titre:'iPhone 13 128Go',prix:280000,cat:'telephone',city:'Dakar',etat:'Très bon état',wa:'771234567',img:'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600',likes:34,verified:true}];
+function render(){const q=document.getElementById('q').value.toLowerCase();const city=document.getElementById('city').value;const grid=document.getElementById('grid');grid.innerHTML='';products.filter(p=>(catFilter==='tout'||p.cat===catFilter)&&(!q||p.titre.toLowerCase().includes(q))&&(!city||p.city===city)).forEach((p,i)=>{const d=document.createElement('div');d.className='bg-white rounded-2xl overflow-hidden border';d.innerHTML=`<div class="relative"><img src="${p.img}" class="w-full h-48 object-cover"><div class="absolute top-2 left-2 bg-black/70 text-white text-[10px] px-2 py-1 rounded-full">${p.city}</div></div><div class="p-3"><div class="font-black text-[#0ea5e9]">${Number(p.prix).toLocaleString()} FCFA</div><div class="text-[13px] font-bold">${p.titre}</div><div class="text-[11px] text-slate-400">${p.etat}</div><button onclick="buy(${i})" class="w-full mt-3 bg-[#0f172a] text-white py-2.5 rounded-xl font-bold text-sm">Acheter 🛡️</button></div>`;grid.appendChild(d);});}
+function setCat(c,el){catFilter=c;document.querySelectorAll('.cat').forEach(b=>b.className='cat bg-white border px-4 py-2 rounded-full text-sm font-bold');el.className='cat bg-[#0f172a] text-white px-4 py-2 rounded-full text-sm font-bold';render();}
+function buy(i){const p=products[i];document.getElementById('buyContent').innerHTML=`<img src="${p.img}" class="w-full h-56 object-cover rounded-xl mb-3"><div class="font-black text-xl text-[#0ea5e9]">${Number(p.prix).toLocaleString()} FCFA</div><div class="font-bold">${p.titre}</div><div class="bg-slate-50 rounded-xl p-3 mt-3 text-sm"><b>🛡️ Paiement sécurisé Wave/OM:</b><br>1. WhatsApp vendeur<br>2. Paye Wave<br>3. Envoie capture</div><a href="https://wa.me/221${p.wa}?text=Je veux ${encodeURIComponent(p.titre)}" target="_blank" class="block w-full mt-4 bg-[#22c55e] text-white text-center py-4 rounded-xl font-black">💬 WhatsApp</a><button onclick="document.getElementById('buyModal').style.display='none'" class="w-full mt-2 bg-slate-100 py-2 rounded-xl">Fermer</button>`;document.getElementById('buyModal').style.display='flex';}
+document.getElementById('photos')?.addEventListener('change',function(e){const pre=document.getElementById('preview');pre.innerHTML='';Array.from(e.target.files).slice(0,3).forEach(f=>{const r=new FileReader();r.onload=ev=>{pre.innerHTML+=`<img src="${ev.target.result}" class="w-16 h-16 rounded-lg object-cover border">`;};r.readAsDataURL(f);});});
+function publishPro(){const t=document.getElementById('titre').value;const pr=document.getElementById('prix').value;const cat=document.getElementById('catInput').value;const city=document.getElementById('cityInput').value;const etat=document.getElementById('etat').value;const wa=document.getElementById('wa').value;const files=document.getElementById('photos').files;if(!t||!pr||!wa){alert('Remplis tout');return;}let img='https://via.placeholder.com/600';if(files[0]){const r=new FileReader();r.onload=ev=>{save(ev.target.result);};r.readAsDataURL(files[0]);}else save(img);function save(im){products.unshift({titre:t,prix:pr,cat,city,etat,wa,img:im,likes:0,verified:false});localStorage.setItem('louma_pro_v6',JSON.stringify(products));render();document.getElementById('sellModal').style.display='none';alert('✅ Publié PRO avec logo !');}}
 render();
 </script>
 </body>
