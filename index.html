@@ -70,7 +70,9 @@ window.openPay = function(i){
     let sep = finalLink.includes('?') ? '&' : '?';
     finalLink = finalLink + sep + 'amount=' + prix;
   }
+  console.log("Paiement Wave:", finalLink);
   window.location.href = finalLink;
+}
 }
 window.publishPro = async function(){
   let t=document.getElementById('titre').value.trim();
