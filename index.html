@@ -53,11 +53,17 @@ window.render = function(){
 }
 window.openPay = function(i){
   let cur = products[i];
+  let prix = Number(String(cur.prix).replace(/\D/g,''));
   let waveLink = cur.waveVendeur || "https://pay.wave.com/m/M_sn_8OU8BaMJ3lgb/c/sn/";
-  let waveAuto = waveLink.includes('?') ? `${waveLink}&amount=${cur.prix}` : `${waveLink}?amount=${cur.prix}`;
-  document.getElementById('buyContent').innerHTML=`<div class="flex justify-between mb-2"><h2 class="font-black">Payer ${cur.nomVendeur||'Vendeur'}</h2><button onclick="document.getElementById('buyModal').style.display='none'" class="w-8 h-8 bg-slate-100 rounded-full">✕</button></div><img src="${cur.img}" class="w-full h-40 object-cover rounded-xl mb-3"><div class="bg-blue-50 border border-blue-200 p-3 rounded-xl text-center mb-3"><div class="font-black text-xl text-[#1e40af]">${Number(cur.prix).toLocaleString()} FCFA</div><div class="text-xs font-bold">${cur.titre}</div><div class="text-[11px] mt-1">Vendeur: ${cur.nomVendeur} • ${cur.telVendeur}</div></div><a href="${waveAuto}" target="_blank" class="block w-full bg-[#1e40af] text-white text-center font-black py-4 rounded-xl">🔵 PAYER AVEC WAVE - ${cur.nomVendeur}</a><div class="text-[10px] text-center mt-2 text-slate-500">Paiement direct vers le Wave du vendeur</div>`;
-  document.getElementById('buyModal').style.display='flex';
+  let finalLink = waveLink.trim();
+  if(!finalLink.startsWith('http')) finalLink = 'https://' + finalLink;
+  if(!finalLink.includes('amount=')){
+    let sep = finalLink.includes('?') ? '&' : '?';
+    finalLink = finalLink + sep + 'amount=' + prix;
+  }
+  window.location.href = finalLink;
 }
+
 window.publishPro = async function(){
   let t=document.getElementById('titre').value.trim();
   let pr=document.getElementById('prix').value.replace(/[^0-9]/g,'');
