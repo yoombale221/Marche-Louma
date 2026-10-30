@@ -1,42 +1,94 @@
 <!DOCTYPE html>
-<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Marché Louma - Wave</title><script src="https://cdn.tailwindcss.com"></script></head>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Marché Louma - Multi-Vendeurs</title><script src="https://cdn.tailwindcss.com"></script><script type="importmap">{"imports":{"firebase/app":"https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js","firebase/firestore":"https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js"}}</script></head>
 <body class="bg-[#f8fafc] pb-24">
-<header class="bg-white sticky top-0 z-40 border-b"><div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center"><div class="flex items-center gap-2"><div class="h-10 w-10 bg-[#1e40af] rounded-xl flex items-center justify-center font-black text-white">L</div><div><div class="font-black">Marché <span class="text-[#f59e0b]">Louma</span></div><div class="text-[9px] font-bold text-slate-500">MARCHÉ LOUMA • WAVE AUTO •SÉCURISÈ</div></div></div><button onclick="document.getElementById('sellModal').style.display='flex'" class="bg-black text-white px-5 py-2.5 rounded-full font-bold text-sm">+ Vendre</button></div></header>
-<div class="max-w-6xl mx-auto p-4"><input id="q" oninput="render()" placeholder="Chercher voiture, iPhone, pule..." class="w-full bg-white border rounded-2xl p-4 mb-4 outline-none"><div id="grid" class="grid grid-cols-2 gap-3"></div></div>
-
-<!-- MODAL VENDRE - CORRIGÉ -->
-<div id="sellModal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4"><div class="bg-white rounded-2xl w-full max-w-md p-5"><div class="flex justify-between mb-3"><h2 class="font-black text-lg">Vendre sur Marché Louma</h2><button onclick="document.getElementById('sellModal').style.display='none'" class="w-8 h-8 bg-slate-100 rounded-full">✕</button></div>
-<input type="file" id="photos" class="w-full border-2 border-dashed rounded-xl p-3 mb-2 text-sm">
-<input id="titre" placeholder="Titre de ton article *" class="w-full border rounded-xl p-3 mb-2 text-sm">
-<input id="prix" type="text" inputmode="numeric" placeholder="Prix FCFA *" class="w-full border rounded-xl p-3 mb-2 text-sm">
-<input id="wa" placeholder="Ton numéro Wave (ex: 784417720)" class="w-full border rounded-xl p-3 mb-3 text-sm">
-<button onclick="publishPro()" class="w-full bg-[#1e40af] text-white font-black py-4 rounded-xl">✅ PUBLIER MAINTENANT</button>
+<header class="bg-white sticky top-0 z-40 border-b"><div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center"><div class="flex items-center gap-2"><div class="h-10 w-10 bg-[#1e40af] rounded-xl flex items-center justify-center font-black text-white">L</div><div><div class="font-black">Marché <span class="text-[#f59e0b]">Louma</span></div><div class="text-[9px] font-bold text-slate-500">MARCHÉ LOUMA • MULTI-VENDEURS • SÉCURISÉ</div></div></div><button onclick="document.getElementById('sellModal').style.display='flex'" class="bg-black text-white px-5 py-2.5 rounded-full font-bold text-sm">+ Vendre</button></div></header>
+<div class="max-w-6xl mx-auto p-4"><input id="q" oninput="render()" placeholder="Chercher produit, vendeur..." class="w-full bg-white border rounded-2xl p-4 mb-2 outline-none"><div id="count" class="text-xs text-slate-500 mb-4">Chargement des produits Marché Louma...</div><div id="grid" class="grid grid-cols-2 gap-3"></div></div>
+<div id="sellModal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4 overflow-y-auto"><div class="bg-white rounded-2xl w-full max-w-md p-5 my-8"><div class="flex justify-between mb-3"><h2 class="font-black text-lg">Vendre sur Marché Louma</h2><button onclick="document.getElementById('sellModal').style.display='none'" class="w-8 h-8 bg-slate-100 rounded-full">✕</button></div>
+<input type="file" id="photos" accept="image/*" class="w-full border-2 border-dashed rounded-xl p-3 mb-2 text-sm">
+<input id="titre" placeholder="Titre produit * (ex: iPhone 12)" class="w-full border rounded-xl p-3 mb-2 text-sm">
+<input id="prix" type="text" inputmode="numeric" placeholder="Prix FCFA * (ex: 150000)" class="w-full border rounded-xl p-3 mb-2 text-sm">
+<div class="bg-yellow-50 border border-yellow-200 rounded-xl p-3 mb-2"><div class="font-black text-xs mb-2">🧑‍💼 Tes infos vendeur</div>
+<input id="nomVendeur" placeholder="Ton nom / boutique * (ex: Moussa)" class="w-full border rounded-xl p-2 mb-2 text-sm">
+<input id="telVendeur" placeholder="Ton WhatsApp * (ex: 771234567)" class="w-full border rounded-xl p-2 mb-2 text-sm">
+<input id="waveVendeur" placeholder="Ton lien Wave Marché * (ex: https://pay.wave.com/m/...)" class="w-full border rounded-xl p-2 text-sm">
+<div class="text-[10px] text-slate-500 mt-1">Le client paiera DIRECTEMENT sur ton Wave</div>
+</div>
+<button onclick="publishPro()" id="btnPub" class="w-full bg-[#1e40af] text-white font-black py-4 rounded-xl">✅ PUBLIER POUR TOUS</button>
 <div id="err" class="hidden mt-2 bg-red-100 text-red-600 p-2 rounded text-xs font-bold"></div>
 </div></div>
-
 <div id="buyModal" class="fixed inset-0 bg-black/70 z-50 hidden items-center justify-center p-4"><div class="bg-white rounded-2xl w-full max-w-md"><div id="buyContent" class="p-5"></div></div></div>
-
-<script>
-const WAVE_LINK = "https://pay.wave.com/m/M_sn_8OU8BaMJ3lgb/c/sn/";
-const NUM = "784417720";
-let base=[{titre:'Parfum 15ml',prix:2000,img:'https://images.unsplash.com/photo-1541643600914-78b084683601?w=600'},{titre:'CANON 5D IV',prix:300000,img:'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=600'},{titre:'Pules coton',prix:15000,img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600'},{titre:'Voiture Rouge',prix:4500000,img:'https://images.unsplash.com/photo-1550355291-bbee04a92027?w=600'}];
-let mine=JSON.parse(localStorage.getItem('louma_v15')||'[]');
-let products=[...mine,...base];
-let cur=null;
-function render(){let q=document.getElementById('q').value.toLowerCase();let g=document.getElementById('grid');g.innerHTML='';products.forEach((p,i)=>{if(q&&!p.titre.toLowerCase().includes(q))return;g.innerHTML+=`<div class="bg-white rounded-2xl border overflow-hidden"><img src="${p.img}" class="w-full h-44 object-cover"><div class="p-3"><div class="font-black text-[#0ea5e9]">${Number(p.prix).toLocaleString()} FCFA</div><div class="text-[13px] font-bold h-10">${p.titre}</div><button onclick="openPay(${i})" class="w-full mt-3 bg-[#1e40af] text-white py-3 rounded-xl font-black text-sm">🔵 Payer avec Wave</button><a href="https://wa.me/221${NUM}" target="_blank" class="block text-center mt-2 bg-[#22c55e] text-white py-2.5 rounded-xl font-bold text-sm">WhatsApp</a></div></div>`;});}
-function openPay(i){cur=products[i];let waveAuto=`${WAVE_LINK}?amount=${cur.prix}`;document.getElementById('buyContent').innerHTML=`<div class="flex justify-between mb-2"><h2 class="font-black">Payer Marché Louma</h2><button onclick="document.getElementById('buyModal').style.display='none'" class="w-8 h-8 bg-slate-100 rounded-full">✕</button></div><img src="${cur.img}" class="w-full h-40 object-cover rounded-xl mb-3"><div class="bg-blue-50 border border-blue-200 p-3 rounded-xl text-center mb-3"><div class="font-black text-xl text-[#1e40af]">${Number(cur.prix).toLocaleString()} FCFA</div><div class="text-xs">${cur.titre}</div></div><a href="${waveAuto}" target="_blank" class="block w-full bg-[#1e40af] text-white text-center font-black py-4 rounded-xl">🔵 PAYER AVEC WAVE</a><div class="text-[10px] text-center mt-2 text-slate-500">${WAVE_LINK}<br>Montant pré-rempli, tape ton PIN</div>`;document.getElementById('buyModal').style.display='flex';}
-function publishPro(){
-let t=document.getElementById('titre').value.trim();
-let pr=document.getElementById('prix').value.replace(/[^0-9]/g,'');
-let wa=document.getElementById('wa').value.replace(/[^0-9]/g,'')||NUM;
-let err=document.getElementById('err');
-if(!t||!pr){err.innerText='⚠️ Mets Titre + Prix';err.classList.remove('hidden');return;}
-err.classList.add('hidden');
-let item={titre:t,prix:pr,img:'https://via.placeholder.com/600?text='+encodeURIComponent(t)};
-let f=document.getElementById('photos').files[0];
-function save(it){let all=JSON.parse(localStorage.getItem('louma_v15')||'[]');all.unshift(it);localStorage.setItem('louma_v15',JSON.stringify(all));products=[...all,...base];render();document.getElementById('sellModal').style.display='none';alert('✅ Publié sur Marché Louma !');}
-if(f){let r=new FileReader();r.onload=e=>{let img=new Image();img.onload=()=>{let c=document.createElement('canvas');c.width=500;c.height=500;c.getContext('2d').drawImage(img,0,0,500,500);item.img=c.toDataURL('image/jpeg',0.6);save(item);};img.src=e.target.result;};r.readAsDataURL(f);}else save(item);
+<script type="module">
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDoc, onSnapshot, orderBy, query, serverTimestamp } from "firebase/firestore";
+const firebaseConfig = {
+  apiKey: "AIzaSyAau29FrKaPvSdxBXBxuGlKvLFPfrelP-U",
+  authDomain: "marche-louma-27615.firebaseapp.com",
+  projectId: "marche-louma-27615",
+  storageBucket: "marche-louma-27615.firebasestorage.app",
+  messagingSenderId: "841591550315",
+  appId: "1:841591550315:web:c315ca9af9d8c8e8be9c2e"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const col = collection(db, "produits");
+let products = [];
+const qy = query(col, orderBy("createdAt","desc"));
+onSnapshot(qy, (snap)=>{
+  products = [];
+  snap.forEach(d=> products.push({id:d.id, ...d.data()}));
+  document.getElementById('count').innerText = `${products.length} produits en ligne à Guédiawaye et partout au Sénégal`;
+  render();
+});
+window.render = function(){
+  let q = document.getElementById('q').value.toLowerCase();
+  let g = document.getElementById('grid');
+  g.innerHTML='';
+  if(products.length===0){ g.innerHTML='<div class="col-span-2 text-center py-20 text-slate-500">Aucun produit pour le moment<br><span class="text-sm">Sois le premier à vendre !</span></div>'; return;}
+  products.forEach((p,i)=>{
+    if(q && !`${p.titre} ${p.nomVendeur||''}`.toLowerCase().includes(q)) return;
+    let waveLink = p.waveVendeur || "https://pay.wave.com/m/M_sn_8OU8BaMJ3lgb/c/sn/";
+    let waveAuto = waveLink.includes('?') ? `${waveLink}&amount=${p.prix}` : `${waveLink}?amount=${p.prix}`;
+    g.innerHTML+=`<div class="bg-white rounded-2xl border overflow-hidden"><img src="${p.img}" class="w-full h-44 object-cover"><div class="p-3"><div class="flex justify-between"><div class="font-black text-[#0ea5e9]">${Number(p.prix).toLocaleString()} FCFA</div><div class="text-[9px] bg-slate-100 rounded-full px-2 py-1 font-bold truncate max-w-[80px]">${p.nomVendeur||'Vendeur'}</div></div><div class="text-[13px] font-bold h-10 mt-1">${p.titre}</div><button onclick="openPay(${i})" class="w-full mt-2 bg-[#1e40af] text-white py-3 rounded-xl font-black text-sm">🔵 Payer ${p.nomVendeur||''}</button><a href="https://wa.me/221${(p.telVendeur||'784417720').replace(/[^0-9]/g,'')}" target="_blank" class="block text-center mt-2 bg-[#22c55e] text-white py-2.5 rounded-xl font-bold text-sm">WhatsApp</a></div></div>`;
+  });
 }
-render();
+window.openPay = function(i){
+  let cur = products[i];
+  let waveLink = cur.waveVendeur || "https://pay.wave.com/m/M_sn_8OU8BaMJ3lgb/c/sn/";
+  let waveAuto = waveLink.includes('?') ? `${waveLink}&amount=${cur.prix}` : `${waveLink}?amount=${cur.prix}`;
+  document.getElementById('buyContent').innerHTML=`<div class="flex justify-between mb-2"><h2 class="font-black">Payer ${cur.nomVendeur||'Vendeur'}</h2><button onclick="document.getElementById('buyModal').style.display='none'" class="w-8 h-8 bg-slate-100 rounded-full">✕</button></div><img src="${cur.img}" class="w-full h-40 object-cover rounded-xl mb-3"><div class="bg-blue-50 border border-blue-200 p-3 rounded-xl text-center mb-3"><div class="font-black text-xl text-[#1e40af]">${Number(cur.prix).toLocaleString()} FCFA</div><div class="text-xs font-bold">${cur.titre}</div><div class="text-[11px] mt-1">Vendeur: ${cur.nomVendeur} • ${cur.telVendeur}</div></div><a href="${waveAuto}" target="_blank" class="block w-full bg-[#1e40af] text-white text-center font-black py-4 rounded-xl">🔵 PAYER AVEC WAVE - ${cur.nomVendeur}</a><div class="text-[10px] text-center mt-2 text-slate-500">Paiement direct vers le Wave du vendeur</div>`;
+  document.getElementById('buyModal').style.display='flex';
+}
+window.publishPro = async function(){
+  let t=document.getElementById('titre').value.trim();
+  let pr=document.getElementById('prix').value.replace(/[^0-9]/g,'');
+  let nom=document.getElementById('nomVendeur').value.trim();
+  let tel=document.getElementById('telVendeur').value.replace(/[^0-9]/g,'');
+  let wave=document.getElementById('waveVendeur').value.trim();
+  let err=document.getElementById('err');
+  let btn=document.getElementById('btnPub');
+  if(!t||!pr||!nom||!tel||!wave){err.innerText='⚠️ Remplis tout : Titre, Prix, Nom, WhatsApp, Lien Wave';err.classList.remove('hidden');return;}
+  err.classList.add('hidden');
+  btn.innerText='⏳ Publication...'; btn.disabled=true;
+  let imgData = 'https://via.placeholder.com/600?text='+encodeURIComponent(t);
+  let f=document.getElementById('photos').files[0];
+  const save = async (imgUrl)=>{
+    try{
+      await addDoc(col, {titre:t, prix:pr, img:imgUrl, nomVendeur:nom, telVendeur:tel, waveVendeur:wave, createdAt: serverTimestamp()});
+      document.getElementById('sellModal').style.display='none';
+      alert('✅ Produit publié ! Tout le monde le voit maintenant !');
+      document.getElementById('titre').value='';document.getElementById('prix').value='';document.getElementById('nomVendeur').value='';document.getElementById('telVendeur').value='';document.getElementById('waveVendeur').value='';
+    }catch(e){err.innerText='Erreur Firestore: '+e.message+' -> Va dans Firebase > Firestore > Règles > mets allow read, write: if true;'; err.classList.remove('hidden');}
+    btn.innerText='✅ PUBLIER POUR TOUS'; btn.disabled=false;
+  };
+  if(f){
+    let r=new FileReader(); r.onload=e=>{
+      let img=new Image(); img.onload=()=>{
+        let c=document.createElement('canvas'); c.width=600; c.height=600;
+        c.getContext('2d').drawImage(img,0,0,600,600);
+        save(c.toDataURL('image/jpeg',0.6));
+      }; img.src=e.target.result;
+    }; r.readAsDataURL(f);
+  } else save(imgData);
+}
 </script>
 </body></html>
