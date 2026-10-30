@@ -1,122 +1,22 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marché Louma PRO</title>
-<script src="https://cdn.tailwindcss.com"></script>
-</head>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Marché Louma - Paiement Wave Auto</title><script src="https://cdn.tailwindcss.com"></script></head>
 <body class="bg-[#f8fafc] pb-24">
-
-<header class="bg-white sticky top-0 z-40 border-b">
-<div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-<div class="flex items-center gap-2">
-<div class="h-10 w-10 bg-[#1e40af] rounded-xl flex items-center justify-center font-black text-white">L</div>
-<div><div class="font-black">Marché <span class="text-[#f59e0b]">Louma</span></div><div class="text-[9px] text-slate-400 font-bold">PRO SECURISÉ</div></div>
-</div>
-<button onclick="document.getElementById('sellModal').style.display='flex'" class="bg-black text-white px-5 py-2.5 rounded-full font-bold">+ Vendre</button>
-</div>
-</header>
-
-<div class="max-w-6xl mx-auto p-4">
-<input id="q" oninput="render()" placeholder="Chercher..." class="w-full bg-white border rounded-xl p-3 mb-3">
-<div id="grid" class="grid grid-cols-2 gap-3"></div>
-</div>
-
-<div id="sellModal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4">
-<div class="bg-white rounded-2xl w-full max-w-md p-5">
-<h2 class="font-black mb-3">Vendre un article</h2>
-<input type="file" id="photos" accept="image/*" class="w-full border-2 border-dashed rounded-xl p-3 mb-2 text-sm">
-<div id="preview" class="text-xs mb-2 text-green-600"></div>
-
-<input id="titre" placeholder="Titre ex: Pule coton" class="w-full border rounded-xl p-3 mb-2">
-<input id="prix" type="number" placeholder="Prix FCFA ex: 15000" class="w-full border rounded-xl p-3 mb-2">
-<input id="wa" type="number" placeholder="WhatsApp ex: 771234567" class="w-full border-2 border-green-300 rounded-xl p-3 mb-2">
-
-<div class="grid grid-cols-2 gap-2 mb-2">
-<select id="catInput" class="border rounded-xl p-3"><option value="mode">Mode</option><option value="voiture">Voiture</option><option value="telephone">Téléphone</option></select>
-<select id="cityInput" class="border rounded-xl p-3"><option>Dakar</option><option>Touba</option><option>Thiès</option></select>
-</div>
-
-<div id="err" class="hidden bg-red-100 text-red-600 p-2 rounded text-xs font-bold mb-2"></div>
-
-<button onclick="publishPro()" class="w-full bg-blue-600 text-white font-black py-4 rounded-xl">PUBLIER</button>
-<button onclick="document.getElementById('sellModal').style.display='none'" class="w-full mt-2 bg-slate-100 py-3 rounded-xl">Fermer</button>
-<button onclick="localStorage.clear(); alert('Cache vidé'); location.reload();" class="w-full mt-2 text-[10px] text-slate-400">Vider cache</button>
-</div>
-</div>
-
+<header class="bg-white sticky top-0 z-40 border-b"><div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center"><div class="flex items-center gap-2"><div class="h-10 w-10 bg-[#1e40af] rounded-xl flex items-center justify-center font-black text-white">L<span class="text-[#f59e0b] text-[10px] -mt-3 ml-[-2px]">↗</span></div><div><div class="font-black text-[15px]">Marché <span class="text-[#f59e0b]">Louma</span></div><div class="text-[9px] tracking-widest text-slate-500 font-bold">MARCHÉ LOUMA • WAVE BUSINESS • SÉCURISÉ</div></div></div><button onclick="document.getElementById('sellModal').style.display='flex'" class="bg-[#0f172a] text-white px-5 py-2.5 rounded-full font-bold text-sm">+ Vendre</button></div></header>
+<div class="bg-[#0f172a] text-white text-[11px]"><div class="max-w-6xl mx-auto px-4 py-2.5 flex justify-between"><span>✅ Marché Louma Vérifié Wave</span><span>🛡️ Paiement Auto 784417720</span><span>📍 Guédiawaye - Moussa Laye Gadiaga</span></div></div>
+<div class="max-w-6xl mx-auto p-4"><div class="bg-white rounded-2xl border p-3 flex gap-2"><input id="q" oninput="render()" placeholder="Cherche voiture, iPhone, pule..." class="flex-1 outline-none text-sm"><select id="city" onchange="render()" class="bg-slate-100 rounded-xl px-3 py-2 text-xs font-bold"><option value="">Tout Sénégal</option><option>Dakar</option><option>Touba</option><option>Thiès</option></select></div><div class="grid grid-cols-2 md:grid-cols-3 gap-3 mt-4" id="grid"></div>
+<div class="mt-8 bg-white border rounded-2xl p-4 text-center"><div class="font-black">💰 Payer Marché Louma avec Wave</div><a href="https://pay.wave.com/m/M_sn_8OU8BaMJ3lgb/c/sn/" target="_blank" class="inline-block mt-3 bg-[#1e40af] text-white px-8 py-3 rounded-xl font-black">CLIQUE ICI POUR PAYER MARCHÉ LOUMA 🔵</a><div class="text-[11px] text-slate-400 mt-2">Lien officiel Marché Louma - Moussa Laye Gadiaga - 784417720</div></div></div>
+<div id="sellModal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4"><div class="bg-white rounded-2xl w-full max-w-md p-5"><div class="flex justify-between mb-3"><h2 class="font-black">Vendre sur Marché Louma</h2><button onclick="document.getElementById('sellModal').style.display='none'" class="w-8 h-8 bg-slate-100 rounded-full">✕</button></div><input type="file" id="photos" class="w-full border-2 border-dashed rounded-xl p-3 mb-2 text-sm"><input id="titre" placeholder="Titre *" class="w-full border rounded-xl p-3 mb-2 text-sm"><input id="prix" type="text" inputmode="numeric" placeholder="Prix FCFA *" class="w-full border rounded-xl p-3 mb-2 text-sm"><button onclick="publishPro()" class="w-full bg-[#0ea5e9] text-white font-black py-4 rounded-xl">PUBLIER SUR MARCHÉ LOUMA</button></div></div>
+<div id="buyModal" class="fixed inset-0 bg-black/70 z-50 hidden items-center justify-center p-4"><div class="bg-white rounded-2xl w-full max-w-md"><div id="buyContent" class="p-5"></div></div></div>
 <script>
-let base = [
-{titre:'Toyota Corolla 2015',prix:4500000,cat:'voiture',city:'Dakar',wa:'771234567',img:'https://images.unsplash.com/photo-1550355291-bbee04a92027?w=600'},
-{titre:'iPhone 13 128Go',prix:280000,cat:'telephone',city:'Dakar',wa:'771234567',img:'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600'}
-];
-let mine = JSON.parse(localStorage.getItem('louma_v9')||'[]');
-let products = [...mine, ...base];
-
-function render(){
-let grid=document.getElementById('grid');
-let q=document.getElementById('q').value.toLowerCase();
-grid.innerHTML='';
-products.filter(p=>!q||p.titre.toLowerCase().includes(q)).forEach(p=>{
-let d=document.createElement('div');
-d.className='bg-white rounded-2xl border overflow-hidden';
-d.innerHTML=`<img src="${p.img}" class="w-full h-40 object-cover"><div class="p-3"><div class="font-black text-blue-600">${p.prix} FCFA</div><div class="text-sm font-bold">${p.titre}</div><div class="text-xs text-slate-400">${p.city}</div><a href="https://wa.me/221${p.wa}" target="_blank" class="block mt-2 bg-green-500 text-white text-center py-2 rounded-xl font-bold">WhatsApp</a></div>`;
-grid.appendChild(d);
-});
-}
-
-document.getElementById('photos').addEventListener('change',e=>{
-let f=e.target.files[0];
-if(f) document.getElementById('preview').innerHTML = f.name + ' OK';
-});
-
-function publishPro(){
-let t=document.getElementById('titre').value.trim();
-let pr=document.getElementById('prix').value.trim();
-let wa=document.getElementById('wa').value.trim();
-let cat=document.getElementById('catInput').value;
-let city=document.getElementById('cityInput').value;
-let err=document.getElementById('err');
-let file=document.getElementById('photos').files[0];
-
-if(!t){err.innerText='Mets le TITRE';err.classList.remove('hidden');return;}
-if(!pr){err.innerText='Mets le PRIX';err.classList.remove('hidden');return;}
-if(!wa){err.innerText='Mets WHATSAPP';err.classList.remove('hidden');return;}
-err.classList.add('hidden');
-
-let item={titre:t,prix:pr,cat,city,wa,img:'https://via.placeholder.com/600?text='+encodeURIComponent(t)};
-
-function save(it){
-let all=JSON.parse(localStorage.getItem('louma_v9')||'[]');
-all.unshift(it);
-localStorage.setItem('louma_v9',JSON.stringify(all));
-products=[...all,...base];
-render();
-document.getElementById('sellModal').style.display='none';
-alert('PUBLIE !');
-}
-
-if(file){
-let reader=new FileReader();
-reader.onload=function(e){
-let img=new Image();
-img.onload=function(){
-let canvas=document.createElement('canvas');
-canvas.width=400;
-canvas.height=400;
-canvas.getContext('2d').drawImage(img,0,0,400,400);
-item.img=canvas.toDataURL('image/jpeg',0.5);
-save(item);
-};
-img.src=e.target.result;
-};
-reader.readAsDataURL(file);
-}else{
-save(item);
-}
-}
-render();
-</script>
-</body>
-</html>
+const WAVE_LINK = "https://pay.wave.com/m/M_sn_8OU8BaMJ3lgb/c/sn/";
+const NOM = "Marché Louma";
+const WAVE_NUM = "784417720";
+let base=[{titre:'Toyota Corolla 2015',prix:4500000,city:'Dakar',img:'https://images.unsplash.com/photo-1550355291-bbee04a92027?w=600'},{titre:'iPhone 13 128Go',prix:280000,city:'Dakar',img:'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600'},{titre:'Pule coton Louma Original',prix:15000,city:'Guédiawaye',img:'https://via.placeholder.com/600?text=Pule+Louma'}];
+let mine=JSON.parse(localStorage.getItem('louma_final')||'[]');
+let products=[...mine,...base];
+let cur=null;
+function render(){let q=document.getElementById('q').value.toLowerCase();let g=document.getElementById('grid');g.innerHTML='';products.forEach((p,i)=>{if(q&&!p.titre.toLowerCase().includes(q))return;let price=Number(String(p.prix).replace(/\D/g,''));let el=document.createElement('div');el.className='bg-white rounded-2xl border overflow-hidden';el.innerHTML=`<img src="${p.img}" class="w-full h-44 object-cover"><div class="p-3"><span class="bg-green-100 text-green-700 text-[9px] px-2 py-0.5 rounded-full font-bold">✓ ${NOM}</span><div class="font-black text-[#0ea5e9] mt-1">${price.toLocaleString()} FCFA</div><div class="text-[13px] font-bold h-10">${p.titre}</div><button onclick="openPay(${i})" class="w-full mt-3 bg-[#1e40af] text-white py-3 rounded-xl font-black text-sm">Payer ${NOM} avec Wave 🔵</button></div>`;g.appendChild(el);});}
+function openPay(i){cur=products[i];let price=Number(String(cur.prix).replace(/\D/g,''));let code='LOUMA-'+Math.floor(100000+Math.random()*900000);let waveAuto=`${WAVE_LINK}?amount=${price}`;document.getElementById('buyContent').innerHTML=`<div class="flex justify-between mb-3"><h2 class="font-black">Payer ${NOM}</h2><button onclick="document.getElementById('buyModal').style.display='none'" class="w-8 h-8 bg-slate-100 rounded-full">✕</button></div><img src="${cur.img}" class="w-full h-40 object-cover rounded-xl mb-3"><div class="bg-blue-50 border border-blue-200 rounded-xl p-3 mb-3 text-center"><div class="text-xs">Montant à payer</div><div class="font-black text-xl text-[#1e40af]">${price.toLocaleString()} FCFA</div><div class="text-[10px]">Code ${code} • ${NOM} - ${WAVE_NUM}</div></div><a href="${waveAuto}" target="_blank" class="block w-full bg-[#1e40af] text-white text-center font-black py-4 rounded-xl mb-2">🔵 PAYER AVEC WAVE - ${NOM}</a><div class="text-[11px] text-center text-slate-500">Tu seras redirigé vers<br><b>${WAVE_LINK}</b><br>Montant pré-rempli, tape juste ton code PIN Wave</div><button onclick="afterPay('${code}')" class="w-full mt-3 bg-slate-900 text-white py-3 rounded-xl font-bold text-sm">J'ai payé ✅ Confirmer sur WhatsApp</button>`;document.getElementById('buyModal').style.display='flex';}
+function afterPay(code){let price=Number(String(cur.prix).replace(/\D/g,''));let msg=`Salam ${NOM} %0A✅ PAIEMENT WAVE MARCHÉ LOUMA %0ACommande ${code}%0AArticle ${encodeURIComponent(cur.titre)}%0AMontant ${price} FCFA%0ALien ${WAVE_LINK}%0AClient a payé, merci de confirmer.`;window.open(`https://wa.me/221${WAVE_NUM}?text=${msg}`,'_blank');document.getElementById('buyModal').style.display='none';}
+function publishPro(){let t=document.getElementById('titre').value.trim();let pr=document.getElementById('prix').value.replace(/[^0-9]/g,'');if(!t||!pr)return alert('Titre + Prix');let item={titre:t,prix:pr,city:'Dakar',img:'https://via.placeholder.com/600?text='+encodeURIComponent(t)};let f=document.getElementById('photos').files[0];function save(it){let all=JSON.parse(localStorage.getItem('louma_final')||'[]');all.unshift(it);localStorage.setItem('louma_final',JSON.stringify(all));products=[...all,...base];render();document.getElementById('sellModal').style.display='none';}if(f){let r=new FileReader();r.onload=e=>{let img=new Image();img.onload=()=>{let c=document.createElement('canvas');c.width=500;c.height=500;c.getContext('2d').drawImage(img,0,0,500,500);item.img=c.toDataURL('image/jpeg',0.6);save(item);};img.src=e.target.result;};r.readAsDataURL(f);}else save(item);}render();
+</script></body></html>
