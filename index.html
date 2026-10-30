@@ -11,7 +11,7 @@
 <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
 <div class="flex items-center gap-2">
 <div class="h-10 w-10 bg-[#1e40af] rounded-xl flex items-center justify-center font-black text-white">M</div>
-<div><div class="font-black text-[15px]">Marché <span class="text-[#f59e0b]">Louma</span></div><div class="text-[9px] tracking-widest text-slate-400 font-bold">MARCHÉ LOUMA • SÉCURISÉ • WAVE DIRECT</div></div>
+<div><div class="font-black text-[15px]">Marché <span class="text-[#f59e0b]">Louma</span></div><div class="text-[9px] tracking-widest text-slate-400 font-bold">SUPPRESSION VENDEUR • SÉCURISÉ</div></div>
 </div>
 <button onclick="document.getElementById('sellModal').style.display='flex'" class="bg-[#0f172a] text-white px-6 py-3 rounded-full font-black text-sm">+ Vendre</button>
 </div>
@@ -19,7 +19,7 @@
 <div class="bg-[#0f172a] text-white text-[11px]">
 <div class="max-w-6xl mx-auto px-4 py-2.5 flex justify-between">
 <span id="count">Chargement...</span>
-<span>🛡️ Wave Sécurisé</span>
+<span>🛡️ Chacun supprime son produit</span>
 <span>📍 Guédiawaye</span>
 </div>
 </div>
@@ -37,7 +37,7 @@
 <input id="titre" placeholder="Titre ex: Chargeur iPhone" class="w-full border rounded-xl p-3 mb-3 text-sm">
 <input id="prix" type="text" inputmode="numeric" placeholder="Prix ex: 1000" class="w-full border rounded-xl p-3 mb-3 text-sm">
 <input id="nomVendeur" placeholder="Nom boutique" class="w-full border rounded-xl p-3 mb-3 text-sm">
-<input id="telVendeur" placeholder="WhatsApp 784417720" class="w-full border rounded-xl p-3 mb-3 text-sm">
+<input id="telVendeur" placeholder="Ton WhatsApp 784417720" class="w-full border rounded-xl p-3 mb-3 text-sm">
 <input id="waveVendeur" value="https://pay.wave.com/m/M_sn_8OU8BaMJ3lgb/c/sn/" class="w-full border-2 border-blue-400 rounded-xl p-3 mb-3 text-sm bg-blue-50">
 <div id="err" class="hidden bg-red-100 text-red-700 p-3 rounded-xl text-xs font-bold mb-3"></div>
 <button onclick="window.publishPro()" id="btnPub" class="w-full bg-[#0f6aaf] text-white font-black py-4 rounded-xl">PUBLIER 🚀</button>
@@ -46,7 +46,7 @@
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAau29FrKaPSdx8KxGuiKxvLFPfRe1P-U",
@@ -76,7 +76,7 @@ window.render = function(){
   const q = document.getElementById('q').value.toLowerCase().trim();
   grid.innerHTML = "";
   if(products.length===0){ grid.innerHTML = '<div class="col-span-3 text-center py-20 text-slate-400">Aucun produit</div>'; return; }
-  products.forEach((p, i)=>{
+  products.forEach((p)=>{
     if(q && !(p.titre+"").toLowerCase().includes(q)) return;
     let prixNum = parseInt(String(p.prix||"0").replace(/[^0-9]/g,"")) || 1000;
     let img = p.img || "https://via.placeholder.com/400?text=Produit";
@@ -84,8 +84,26 @@ window.render = function(){
     let waveBase = String(p.waveVendeur||DEFAULT_WAVE).trim();
     if(!waveBase.includes("wave.com")) waveBase = DEFAULT_WAVE;
     let finalLink = waveBase + (waveBase.includes("?") ? "&" : "?") + "amount=" + prixNum;
-    grid.innerHTML += '<div class="bg-white rounded-2xl border overflow-hidden shadow-sm"><img src="'+img+'" class="w-full h-44 object-cover"><div class="p-3"><div class="font-black text-[#0ea5e9] text-[16px]">'+prixNum.toLocaleString()+' FCFA</div><div class="text-[13px] font-bold leading-tight h-10 mt-1">'+(p.titre||"Produit")+'</div><div class="text-[11px] text-slate-500 mt-1">'+(p.nomVendeur||"Marche Louma")+'</div><a href="'+finalLink+'" class="block text-center w-full mt-3 bg-[#0f172a] text-white py-3 rounded-xl font-black text-[13px]">Payer Marché Louma 🔵</a><a href="https://wa.me/221'+tel+'" target="_blank" class="block text-center mt-2 bg-[#22c55e] text-white py-2.5 rounded-xl font-bold text-[13px]">💬 WhatsApp</a></div></div>';
+    grid.innerHTML += '<div class="bg-white rounded-2xl border overflow-hidden shadow-sm"><img src="'+img+'" class="w-full h-44 object-cover"><div class="p-3"><div class="font-black text-[#0ea5e9] text-[16px]">'+prixNum.toLocaleString()+' FCFA</div><div class="text-[13px] font-bold leading-tight h-10 mt-1">'+(p.titre||"Produit")+'</div><div class="text-[11px] text-slate-500 mt-1">'+(p.nomVendeur||"Marche Louma")+' • '+tel+'</div><a href="'+finalLink+'" class="block text-center w-full mt-3 bg-[#0f172a] text-white py-3 rounded-xl font-black text-[13px]">Payer Marché Louma 🔵</a><a href="https://wa.me/221'+tel+'" target="_blank" class="block text-center mt-2 bg-[#22c55e] text-white py-2.5 rounded-xl font-bold text-[13px]">💬 WhatsApp</a><button onclick="window.deleteProduct(\''+p.id+'\',\''+tel+'\')" class="w-full mt-2 bg-white border border-red-200 text-red-500 py-2.5 rounded-xl font-bold text-[12px]">🗑️ Supprimer mon produit</button></div></div>';
   });
+};
+
+window.deleteProduct = async function(id, ownerTel){
+  let input = prompt("SUPPRESSION\n\nEntre ton numéro WhatsApp pour confirmer que c'est ton produit:\nEx: 784417720\n\n(Patron: tape LOUMA2024)");
+  if(!input) return;
+  let cleanInput = input.replace(/[^0-9]/g,"").slice(-9);
+  let cleanOwner = String(ownerTel).replace(/[^0-9]/g,"").slice(-9);
+  let masterTel = "784417720";
+  if(cleanInput === cleanOwner || cleanInput === masterTel || input === "LOUMA2024"){
+    if(confirm("Supprimer définitivement ce produit ? Cette action est irréversible.")){
+      try{
+        await deleteDoc(doc(db, "produits", id));
+        alert("✅ Produit supprimé avec succès !");
+      }catch(e){ alert("Erreur: " + e.message + "\nVérifie que tu as mis la règle delete dans Firebase !"); }
+    }
+  } else {
+    alert("❌ Numéro incorrect !\n\nCe n'est pas ton produit.\nTu as entré: "+input+"\nLe vendeur est: "+ownerTel);
+  }
 };
 
 window.publishPro = async function(){
