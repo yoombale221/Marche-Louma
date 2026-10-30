@@ -51,8 +51,10 @@ window.render = function(){
   g.innerHTML='';
   if(products.length===0){ g.innerHTML='<div class="col-span-2 text-center py-20 text-slate-400">Aucun produit</div>'; return; }
   products.forEach((p,i)=>{
-    if(q && !`${p.titre} ${p.nomVendeur||''}`.toLowerCase().includes(q)) return;
-    let price = Number(String(p.prix).replace(/\D/g,''));
+    window.openPay = function(i){
+  let cur = products[i];
+  let prix = Number(String(cur.prix).replace(/[^0-9]/g,'')) || cur.prix || 6000;
+  if(isNaN(prix)) prix = 6000;
     let img = p.img || 'https://via.placeholder.com/300';
     let tel = String(p.telVendeur||'').replace(/\D/g,'');
     g.innerHTML+=`<div class="bg-white rounded-2xl border overflow-hidden"><img src="${img}" class="w-full h-44 object-cover"><div class="p-3"><div class="font-black text-[#0ea5e9] text-[15px]">${price.toLocaleString()} FCFA</div><div class="text-[13px] font-bold leading-tight h-10 mt-1">${p.titre}</div><div class="text-[11px] text-slate-500">${p.nomVendeur||'Vendeur'}</div><button onclick="window.openPay(${i})" class="w-full mt-3 bg-[#0f172a] text-white py-3 rounded-xl font-black text-sm">Payer Marché Louma 🔵</button><a href="https://wa.me/221${tel}" target="_blank" class="block text-center mt-2 bg-[#22c55e] text-white py-2.5 rounded-xl font-bold text-sm">💬 WhatsApp</a></div></div>`;
