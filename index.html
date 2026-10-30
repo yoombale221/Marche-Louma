@@ -1,100 +1,38 @@
-<!DOCTYPE html>
-<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Marché Louma PRO</title><script src="https://cdn.tailwindcss.com"></script></head>
-<body class="bg-[#f8fafc] pb-24">
-<header class="bg-white sticky top-0 z-40 border-b"><div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center"><div class="flex items-center gap-2"><div class="h-10 w-10 bg-[#1e40af] rounded-xl flex items-center justify-center font-black text-white text-xl">L<span class="text-[#f59e0b] text-[10px] ml-[-2px] -mt-3">↗</span></div><div><div class="font-black leading-none text-[15px]">Marché <span class="text-[#f59e0b]">Louma</span></div><div class="text-[9px] tracking-widest text-slate-400 font-bold">PRO • SÉCURISÉ</div></div></div><button onclick="document.getElementById('sellModal').style.display='flex'" class="bg-[#0f172a] text-white px-5 py-2.5 rounded-full font-bold text-sm">+ Vendre</button></div></header>
-<div class="bg-[#0f172a] text-white text-[11px]"><div class="max-w-6xl mx-auto px-4 py-2.5 flex gap-3"><span>🛡️ Paiement Wave & OM</span><span>•</span><span>📦 Livraison Sénégal</span><span>•</span><span>⭐ Vendeurs Notés</span></div></div>
-<div class="max-w-6xl mx-auto p-4"><div class="bg-white rounded-2xl border p-3 flex gap-2"><input id="q" oninput="render()" placeholder="Voiture, iPhone..." class="flex-1 outline-none text-sm"><select id="city" onchange="render()" class="bg-slate-100 rounded-xl px-2 py-1 text-xs font-bold"><option value="">Tout Sénégal</option><option>Dakar</option><option>Touba</option><option>Thiès</option></select></div><div class="flex gap-2 mt-3 overflow-x-auto text-sm"><button onclick="setCat('tout',this)" class="cat active bg-[#0f172a] text-white px-4 py-2 rounded-full font-bold">Tout</button><button onclick="setCat('voiture',this)" class="cat bg-white border px-4 py-2 rounded-full font-bold">🚗 Voitures</button><button onclick="setCat('telephone',this)" class="cat bg-white border px-4 py-2 rounded-full font-bold">📱 Téléphones</button><button onclick="setCat('mode',this)" class="cat bg-white border px-4 py-2 rounded-full font-bold">👕 Mode</button></div><div id="grid" class="grid grid-cols-2 md:grid-cols-3 gap-3 mt-4"></div></div>
-
-<div id="sellModal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4"><div class="bg-white rounded-2xl w-full max-w-md p-5 max-h-[90vh] overflow-auto">
-<div class="flex justify-between mb-3"><h2 class="font-black">Vendre PRO</h2><button onclick="document.getElementById('sellModal').style.display='none'" class="w-8 h-8 bg-slate-100 rounded-full">✕</button></div>
-<input type="file" id="photos" accept="image/*" class="w-full border-2 border-dashed rounded-xl p-3 mb-2 text-sm"><div id="preview" class="flex gap-2 mb-2"></div>
-<input id="titre" placeholder="Titre ex: Pule coton" class="w-full border rounded-xl p-3 mb-2 text-sm">
-<div class="grid grid-cols-2 gap-2 mb-2"><input id="prix" type="number" placeholder="Prix FCFA *" class="border rounded-xl p-3 text-sm"><select id="catInput" class="border rounded-xl p-3 text-sm"><option value="mode">Mode</option><option value="telephone">Téléphone</option><option value="voiture">Voiture</option><option value="maison">Maison</option></select></div>
-<div class="grid grid-cols-2 gap-2 mb-2"><select id="cityInput" class="border rounded-xl p-3 text-sm"><option>Dakar</option><option>Touba</option><option>Thiès</option><option>Saint-Louis</option></select><select id="etat" class="border rounded-xl p-3 text-sm"><option>Neuf</option><option>Très bon état</option><option>Bon état</option></select></div>
-<input id="wa" placeholder="WhatsApp 77XXXXXXX *" class="w-full border rounded-xl p-3 mb-2 text-sm font-bold">
-<textarea id="desc" placeholder="Description..." class="w-full border rounded-xl p-3 mb-2 text-sm h-16"></textarea>
-<div id="err" class="text-red-500 text-xs font-bold mb-2 hidden"></div>
-<button onclick="publishPro()" class="w-full bg-[#0ea5e9] text-white font-black py-4 rounded-xl">🚀 PUBLIER GRATUITEMENT</button>
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Marché Louma PRO</title><script src="https://cdn.tailwindcss.com"></script></head><body class="bg-[#f8fafc] pb-24">
+<header class="bg-white sticky top-0 z-40 border-b"><div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center"><div class="flex items-center gap-2"><div class="h-10 w-10 bg-[#1e40af] rounded-xl flex items-center justify-center font-black text-white">L<span class="text-[#f59e0b] text-[10px] -mt-3">↗</span></div><div><div class="font-black text-[15px]">Marché <span class="text-[#f59e0b]">Louma</span></div><div class="text-[9px] text-slate-400 font-bold">PRO • SÉCURISÉ</div></div></div><button onclick="document.getElementById('sellModal').style.display='flex'" class="bg-[#0f172a] text-white px-5 py-2.5 rounded-full font-bold text-sm">+ Vendre</button></div></header>
+<div class="max-w-6xl mx-auto p-4"><div class="bg-white rounded-2xl border p-3 flex gap-2"><input id="q" oninput="render()" placeholder="Voiture, iPhone..." class="flex-1 outline-none text-sm"><select id="city" onchange="render()" class="bg-slate-100 rounded-xl px-2 py-1 text-xs font-bold"><option value="">Tout Sénégal</option><option>Dakar</option><option>Touba</option><option>Thiès</option></select></div><div class="flex gap-2 mt-3 overflow-x-auto text-sm"><button onclick="setCat('tout',this)" class="cat bg-[#0f172a] text-white px-4 py-2 rounded-full font-bold">Tout</button><button onclick="setCat('mode',this)" class="cat bg-white border px-4 py-2 rounded-full font-bold">👕 Mode</button><button onclick="setCat('voiture',this)" class="cat bg-white border px-4 py-2 rounded-full font-bold">🚗 Voitures</button><button onclick="setCat('telephone',this)" class="cat bg-white border px-4 py-2 rounded-full font-bold">📱 Téléphones</button></div><div id="grid" class="grid grid-cols-2 md:grid-cols-3 gap-3 mt-4"></div></div>
+<div id="sellModal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4"><div class="bg-white rounded-2xl w-full max-w-md p-5 max-h-[90vh] overflow-auto"><div class="flex justify-between mb-3"><h2 class="font-black">Vendre</h2><button onclick="this.closest('#sellModal').style.display='none'" class="w-8 h-8 bg-slate-100 rounded-full">✕</button></div>
+<input type="file" id="photos" accept="image/*" class="w-full border-2 border-dashed rounded-xl p-3 mb-2 text-sm"><div id="preview" class="text-xs text-slate-400 mb-2"></div>
+<input id="titre" placeholder="Titre *" class="w-full border rounded-xl p-3 mb-2 text-sm"><input id="prix" type="number" placeholder="Prix FCFA *" class="w-full border rounded-xl p-3 mb-2 text-sm"><input id="wa" placeholder="WhatsApp 77XXXXXXX *" class="w-full border-2 border-green-200 rounded-xl p-3 mb-2 text-sm font-bold">
+<div class="grid grid-cols-2 gap-2 mb-2"><select id="catInput" class="border rounded-xl p-3 text-sm"><option value="mode">Mode</option><option value="telephone">Téléphone</option><option value="voiture">Voiture</option><option value="maison">Maison</option></select><select id="cityInput" class="border rounded-xl p-3 text-sm"><option>Dakar</option><option>Touba</option><option>Thiès</option></select></div>
+<div id="err" class="text-red-600 text-xs font-bold mb-2 hidden bg-red-50 p-2 rounded"></div>
+<button onclick="publishPro()" class="w-full bg-[#0ea5e9] text-white font-black py-4 rounded-xl">🚀 PUBLIER</button>
+<button onclick="localStorage.clear();alert('Ancien cache supprimé');location.reload();" class="w-full mt-2 text-[11px] text-slate-400">🗑️ Vider cache si bug</button>
 </div></div>
-
 <div id="buyModal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4"><div class="bg-white rounded-2xl w-full max-w-md p-6"><div id="buyContent"></div></div></div>
-
 <script>
 let catFilter='tout';
-let baseProducts = [
-{titre:'Toyota Corolla 2015 - 45.000km',prix:4500000,cat:'voiture',city:'Dakar',etat:'Très bon état',wa:'771234567',img:'https://images.unsplash.com/photo-1550355291-bbee04a92027?w=600'},
-{titre:'iPhone 13 128Go - Batterie 89%',prix:280000,cat:'telephone',city:'Dakar',etat:'Très bon état',wa:'771234567',img:'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600'}
-];
-let myProducts = JSON.parse(localStorage.getItem('louma_v7')||'[]');
-let products = [...myProducts, ...baseProducts];
-
-function render(){
- const q=document.getElementById('q').value.toLowerCase();
- const city=document.getElementById('city').value;
- const grid=document.getElementById('grid'); grid.innerHTML='';
- let list = products.filter(p=> (catFilter==='tout'||p.cat===catFilter) && (!q||p.titre.toLowerCase().includes(q)) && (!city||p.city===city));
- if(list.length===0){grid.innerHTML='<div class="col-span-2 text-center py-10 text-slate-400 text-sm">Aucun article - publie le premier !</div>';return;}
- list.forEach((p,i)=>{
-   const d=document.createElement('div'); d.className='bg-white rounded-2xl overflow-hidden border';
-   d.innerHTML=`<img src="${p.img}" class="w-full h-44 object-cover"><div class="p-3"><div class="font-black text-[#0ea5e9] text-[14px]">${Number(p.prix).toLocaleString()} FCFA</div><div class="text-[13px] font-bold leading-tight h-10">${p.titre}</div><div class="text-[11px] text-slate-400 mt-1">${p.city} • ${p.etat}</div><button onclick="buy(${i})" class="w-full mt-3 bg-[#0f172a] text-white py-2.5 rounded-xl font-bold text-sm">Acheter 🛡️</button><a href="https://wa.me/221${p.wa}?text=Salam, je veux ${encodeURIComponent(p.titre)} - ${p.prix}FCFA sur Louma" target="_blank" class="block text-center mt-2 bg-[#22c55e] text-white py-2 rounded-xl font-bold text-sm">💬 WhatsApp</a></div>`;
-   grid.appendChild(d);
- });
-}
-function setCat(c,el){catFilter=c; document.querySelectorAll('.cat').forEach(b=>b.className='cat bg-white border px-4 py-2 rounded-full font-bold'); el.className='cat active bg-[#0f172a] text-white px-4 py-2 rounded-full font-bold'; render();}
-function buy(i){const p=products[i]; document.getElementById('buyContent').innerHTML=`<img src="${p.img}" class="w-full h-52 object-cover rounded-xl mb-3"><div class="font-black text-lg text-[#0ea5e9]">${Number(p.prix).toLocaleString()} FCFA</div><div class="font-bold text-sm">${p.titre}</div><div class="text-xs text-slate-500 mb-3">${p.city} • ${p.etat}</div><a href="https://wa.me/221${p.wa}?text=Salam, je veux acheter ${encodeURIComponent(p.titre)} pour ${p.prix}FCFA. Louma PRO" target="_blank" class="block w-full mt-4 bg-[#22c55e] text-white text-center py-4 rounded-xl font-black">💬 CONTACTER VENDEUR</a><button onclick="document.getElementById('buyModal').style.display='none'" class="w-full mt-2 bg-slate-100 py-3 rounded-xl font-bold text-sm">Fermer</button>`; document.getElementById('buyModal').style.display='flex';}
-
-document.getElementById('photos').addEventListener('change',function(e){
- const pre=document.getElementById('preview'); pre.innerHTML='';
- if(e.target.files[0]){const r=new FileReader(); r.onload=ev=>{pre.innerHTML=`<img src="${ev.target.result}" class="w-20 h-20 rounded-xl object-cover border-2 border-[#0ea5e9]"> <span class="text-xs text-green-600 font-bold">Photo OK ✓</span>`;}; r.readAsDataURL(e.target.files[0]);}
-});
-
+let base=[{titre:'Toyota Corolla 2015 - 45.000km',prix:4500000,cat:'voiture',city:'Dakar',etat:'Très bon état',wa:'771234567',img:'https://images.unsplash.com/photo-1550355291-bbee04a92027?w=600'},{titre:'iPhone 13 128Go - Batterie 89%',prix:280000,cat:'telephone',city:'Dakar',etat:'Très bon état',wa:'771234567',img:'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600'}];
+let mine=JSON.parse(localStorage.getItem('louma_v8')||'[]');
+let products=[...mine,...base];
+function render(){let q=document.getElementById('q').value.toLowerCase();let city=document.getElementById('city').value;let grid=document.getElementById('grid');grid.innerHTML='';let list=products.filter(p=>(catFilter==='tout'||p.cat===catFilter)&&(!q||p.titre.toLowerCase().includes(q))&&(!city||p.city===city));list.forEach((p,i)=>{let d=document.createElement('div');d.className='bg-white rounded-2xl overflow-hidden border';d.innerHTML=`<img src="${p.img}" class="w-full h-44 object-cover"><div class="p-3"><div class="font-black text-[#0ea5e9] text-[14px]">${Number(p.prix).toLocaleString()} FCFA</div><div class="text-[13px] font-bold leading-tight h-10">${p.titre}</div><div class="text-[11px] text-slate-400 mt-1">${p.city} • ${p.wa}</div><a href="https://wa.me/221${p.wa}?text=${encodeURIComponent(p.titre)}" target="_blank" class="block text-center mt-3 bg-[#22c55e] text-white py-2 rounded-xl font-bold text-sm">💬 WhatsApp</a></div>`;grid.appendChild(d);});}
+function setCat(c,el){catFilter=c;document.querySelectorAll('.cat').forEach(b=>b.className='cat bg-white border px-4 py-2 rounded-full font-bold');el.className='cat bg-[#0f172a] text-white px-4 py-2 rounded-full font-bold';render();}
+document.getElementById('photos').addEventListener('change',e=>{let f=e.target.files[0];if(f)document.getElementById('preview').innerHTML='Photo: '+f.name+' ('+Math.round(f.size/1024)+' Ko) ✓';});
 function publishPro(){
- const t=document.getElementById('titre').value.trim();
- const pr=document.getElementById('prix').value.trim();
- const cat=document.getElementById('catInput').value;
- const city=document.getElementById('cityInput').value;
- const etat=document.getElementById('etat').value;
- const wa=document.getElementById('wa').value.trim().replace(/\D/g,'');
- const desc=document.getElementById('desc').value;
- const err=document.getElementById('err');
- const file=document.getElementById('photos').files[0];
-
- if(!t){err.textContent='❌ Mets le titre (ex: Pule coton)'; err.classList.remove('hidden'); return;}
- if(!pr){err.textContent='❌ Mets le prix (ex: 15000)'; err.classList.remove('hidden'); return;}
- if(!wa || wa.length<7){err.textContent='❌ Mets ton WhatsApp (77XXXXXXX)'; err.classList.remove('hidden'); return;}
+ let t=document.getElementById('titre').value.trim();
+ let pr=document.getElementById('prix').value.trim();
+ let wa=document.getElementById('wa').value.trim().replace(/\D/g,'');
+ let cat=document.getElementById('catInput').value;
+ let city=document.getElementById('cityInput').value;
+ let file=document.getElementById('photos').files[0];
+ let err=document.getElementById('err');
+ if(!t){err.textContent='❌ Mets TITRE';err.classList.remove('hidden');return;}
+ if(!pr){err.textContent='❌ Mets PRIX ex: 15000';err.classList.remove('hidden');return;}
+ if(!wa||wa.length<7){err.textContent='❌ Mets WHATSAPP 9 chiffres ex: 777123456';err.classList.remove('hidden');return;}
  err.classList.add('hidden');
-
- function finalSave(imgData){
-   try{
-     let all=JSON.parse(localStorage.getItem('louma_v7')||'[]');
-     all.unshift({titre:t,prix:pr,cat,city,etat,wa,img:imgData,desc});
-     localStorage.setItem('louma_v7', JSON.stringify(all));
-     products = [...all, ...baseProducts];
-     render();
-     document.getElementById('sellModal').style.display='none';
-     alert('✅ PULE PUBLIÉ ! Il est en haut de la page maintenant');
-     document.getElementById('titre').value=''; document.getElementById('prix').value=''; document.getElementById('wa').value=''; document.getElementById('preview').innerHTML='';
-   }catch(e){alert('Photo trop lourde, on publie sans photo'); let all=JSON.parse(localStorage.getItem('louma_v7')||'[]'); all.unshift({titre:t,prix:pr,cat,city,etat,wa,img:'https://via.placeholder.com/600?text='+encodeURIComponent(t),desc}); localStorage.setItem('louma_v7', JSON.stringify(all)); products=[...all,...baseProducts]; render(); document.getElementById('sellModal').style.display='none';}
- }
-
- if(file){
-   const reader=new FileReader();
-   reader.onload=function(e){
-     const img=new Image();
-     img.onload=function(){
-       const canvas=document.createElement('canvas');
-       const max=500; let w=img.width, h=img.height;
-       if(w>h){if(w>max){h*=max/w; w=max;}}else{if(h>max){w*=max/h; h=max;}}
-       canvas.width=w; canvas.height=h;
-       canvas.getContext('2d').drawImage(img,0,0,w,h);
-       finalSave(canvas.toDataURL('image/jpeg',0.6));
-     };
-     img.src=e.target.result;
-   };
-   reader.readAsDataURL(file);
- } else {
-   finalSave('https://via.placeholder.com/600?text='+encodeURIComponent(t));
- }
+ let newItem={titre:t,prix:pr,cat,city,etat:'Neuf',wa,img:'https://via.placeholder.com/600?text='+encodeURIComponent(t)};
+ function save(item){try{let all=JSON.parse(localStorage.getItem('louma_v8')||'[]');all.unshift(item);localStorage.setItem('louma_v8',JSON.stringify(all));products=[...all,...base];render();document.getElementById('sellModal').style.display='none';alert('✅ PUBLIÉ ! Ton article est en haut');document.getElementById('titre').value='';document.getElementById('prix').value='';}catch(e){alert('Erreur stockage, mais on publie quand même');products=[item,...base];render();document.getElementById('sellModal').style.display='none';}}
+ if(file){let r=new FileReader();r.onload=e=>{let img=new Image();img.onload=()=>{let c=document.createElement('canvas');let max=400;let w=img.width,h=img.height;if(w>max||h>max){if(w>h){h*=max/w;w=max;}else{w*=max/h;h=max;}}c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);newItem.img=c.toDataURL('image/jpeg',0.5);save(newItem);};img.src=e.target.result;};r.readAsDataURL(file);}else{save(newItem);}
 }
 render();
 </script></body></html>
