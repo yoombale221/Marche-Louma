@@ -11,7 +11,7 @@
 <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
 <div class="flex items-center gap-2">
 <div class="h-10 w-10 bg-[#1e40af] rounded-xl flex items-center justify-center font-black text-white">M</div>
-<div><div class="font-black text-[15px]">Marché <span class="text-[#f59e0b]">Louma</span></div><div class="text-[9px] tracking-widest text-slate-400 font-bold">SUPPRESSION VENDEUR • SÉCURISÉ</div></div>
+<div><div class="font-black text-[15px]">Marché <span class="text-[#f59e0b]">Louma</span></div><div class="text-[9px] tracking-widest text-slate-400 font-bold">MARCHÉ LOUMA • SÉCURISÉ • WAVE DIRECT</div></div>
 </div>
 <button onclick="document.getElementById('sellModal').style.display='flex'" class="bg-[#0f172a] text-white px-6 py-3 rounded-full font-black text-sm">+ Vendre</button>
 </div>
@@ -19,7 +19,7 @@
 <div class="bg-[#0f172a] text-white text-[11px]">
 <div class="max-w-6xl mx-auto px-4 py-2.5 flex justify-between">
 <span id="count">Chargement...</span>
-<span>🛡️ Chacun supprime son produit</span>
+<span>🛡️ Vendeurs vérifiés</span>
 <span>📍 Guédiawaye</span>
 </div>
 </div>
@@ -84,25 +84,25 @@ window.render = function(){
     let waveBase = String(p.waveVendeur||DEFAULT_WAVE).trim();
     if(!waveBase.includes("wave.com")) waveBase = DEFAULT_WAVE;
     let finalLink = waveBase + (waveBase.includes("?") ? "&" : "?") + "amount=" + prixNum;
-    grid.innerHTML += '<div class="bg-white rounded-2xl border overflow-hidden shadow-sm"><img src="'+img+'" class="w-full h-44 object-cover"><div class="p-3"><div class="font-black text-[#0ea5e9] text-[16px]">'+prixNum.toLocaleString()+' FCFA</div><div class="text-[13px] font-bold leading-tight h-10 mt-1">'+(p.titre||"Produit")+'</div><div class="text-[11px] text-slate-500 mt-1">'+(p.nomVendeur||"Marche Louma")+' • '+tel+'</div><a href="'+finalLink+'" class="block text-center w-full mt-3 bg-[#0f172a] text-white py-3 rounded-xl font-black text-[13px]">Payer Marché Louma 🔵</a><a href="https://wa.me/221'+tel+'" target="_blank" class="block text-center mt-2 bg-[#22c55e] text-white py-2.5 rounded-xl font-bold text-[13px]">💬 WhatsApp</a><button onclick="window.deleteProduct(\''+p.id+'\',\''+tel+'\')" class="w-full mt-2 bg-white border border-red-200 text-red-500 py-2.5 rounded-xl font-bold text-[12px]">🗑️ Supprimer mon produit</button></div></div>';
+    grid.innerHTML += '<div class="bg-white rounded-2xl border overflow-hidden shadow-sm"><img src="'+img+'" class="w-full h-44 object-cover"><div class="p-3"><div class="font-black text-[#0ea5e9] text-[16px]">'+prixNum.toLocaleString()+' FCFA</div><div class="text-[13px] font-bold leading-tight h-10 mt-1">'+(p.titre||"Produit")+'</div><div class="text-[11px] text-slate-500 mt-1">'+(p.nomVendeur||"Marche Louma")+'</div><a href="'+finalLink+'" class="block text-center w-full mt-3 bg-[#0f172a] text-white py-3 rounded-xl font-black text-[13px]">Payer Marché Louma 🔵</a><a href="https://wa.me/221'+tel+'" target="_blank" class="block text-center mt-2 bg-[#22c55e] text-white py-2.5 rounded-xl font-bold text-[13px]">💬 WhatsApp</a><button onclick="window.manageProduct(\''+p.id+'\',\''+tel+'\')" class="w-full mt-2 bg-slate-50 border border-slate-200 text-slate-500 py-2 rounded-xl font-bold text-[11px]">⚙️ Gérer</button></div></div>';
   });
 };
 
-window.deleteProduct = async function(id, ownerTel){
-  let input = prompt("SUPPRESSION\n\nEntre ton numéro WhatsApp pour confirmer que c'est ton produit:\nEx: 784417720\n\n(Patron: tape LOUMA2024)");
+window.manageProduct = async function(id, ownerTel){
+  let input = prompt("GESTION PRODUIT\n\nEntre ton numéro WhatsApp pour gérer ce produit:\nEx: 784417720\n\nCode patron: LOUMA2024");
   if(!input) return;
   let cleanInput = input.replace(/[^0-9]/g,"").slice(-9);
   let cleanOwner = String(ownerTel).replace(/[^0-9]/g,"").slice(-9);
   let masterTel = "784417720";
   if(cleanInput === cleanOwner || cleanInput === masterTel || input === "LOUMA2024"){
-    if(confirm("Supprimer définitivement ce produit ? Cette action est irréversible.")){
+    if(confirm("Retirer ce produit du marché ? Cette action est définitive.")){
       try{
         await deleteDoc(doc(db, "produits", id));
-        alert("✅ Produit supprimé avec succès !");
-      }catch(e){ alert("Erreur: " + e.message + "\nVérifie que tu as mis la règle delete dans Firebase !"); }
+        alert("✅ Produit retiré avec succès !");
+      }catch(e){ alert("Erreur: " + e.message); }
     }
   } else {
-    alert("❌ Numéro incorrect !\n\nCe n'est pas ton produit.\nTu as entré: "+input+"\nLe vendeur est: "+ownerTel);
+    alert("❌ Numéro incorrect !\nTu as entré: "+input+"\nVendeur: "+ownerTel);
   }
 };
 
