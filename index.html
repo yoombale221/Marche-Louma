@@ -133,5 +133,32 @@ window.publishPro = async function(){
 };
 </script>
 <script data-goatcounter="https://marchelouma.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script></body>
+        async src="//gc.zgo.at/count.js"></script><script>
+<script>document.addEventListener('change', function(e){
+  if(e.target.type !== 'file') return;
+  var file = e.target.files[0];
+  if(!file || !file.type.startsWith('image/')) return;
+  var reader = new FileReader();
+  reader.onload = function(ev){
+    var img = new Image();
+    img.onload = function(){
+      var max = 800;
+      var w = img.width, h = img.height;
+      if(w > h && w > max){ h = h * max / w; w = max; }
+      if(h >= w && h > max){ w = w * max / h; h = max; }
+      var c = document.createElement('canvas');
+      c.width = w; c.height = h;
+      c.getContext('2d').drawImage(img, 0, 0, w, h);
+      c.toBlob(function(blob){
+        var nf = new File([blob], 'photo.jpg', {type:'image/jpeg'});
+        var dt = new DataTransfer();
+        dt.items.add(nf);
+        e.target.files = dt.files;
+      }, 'image/jpeg', 0.7);
+    };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+});
+</script></body>
 </html>
